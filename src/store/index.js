@@ -4,6 +4,8 @@ import axios from "./axios-common";
 
 Vue.use(Vuex);
 
+import houseStore from "@/store/modules/houseStore.js";
+
 export default new Vuex.Store({
   state: {
     Qna: {},
@@ -71,5 +73,8 @@ export default new Vuex.Store({
       });
     },
   },
-  modules: {},
+  modules: {
+    houseStore,
+
+  },
 });

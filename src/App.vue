@@ -1,20 +1,23 @@
 <template>
   <div id="app">
     <div id="nav">
-        <QnaHeader />
+        <!-- <QnaHeader /> -->
+        <main-header />
         <router-view/>
     </div>
   </div>
 </template>
 
 <script>
-  import QnaHeader from "@/components/QnaHeader.vue";
+  //import QnaHeader from "@/components/QnaHeader.vue";
+  import MainHeader from "@/components/MainHeader.vue";
   export default {
      created() {
        //this.$router.push("/");
      },
     components: {
-      QnaHeader,
+      //QnaHeader, 
+      MainHeader
     }
   }
 </script>

@@ -1,5 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+
+import Main from "@/views/main/Main.vue";
+
 import QnaInput from "@/views/QnaInput.vue";
 import QnaList from "@/views/QnaList.vue";
 import QnaReply from "@/views/QnaReply.vue";
@@ -11,6 +14,12 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
+    name: "Main",
+    component: Main
+  },
+
+  {
+    path: "/list",
     name: "QnaList",
     component: QnaList,
   },

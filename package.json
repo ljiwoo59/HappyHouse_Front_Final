@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
+    "bootstrap": "^4.5.3",
+    "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
@@ -30,6 +32,9 @@
     "env": {
       "node": true
     },
+    "globals": {
+	    "kakao": false
+    },
     "extends": [
       "plugin:vue/essential",
       "eslint:recommended"
@@ -37,7 +42,9 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "no-unused-vars" : "off"
+    }
   },
   "browserslist": [
     "> 1%",
