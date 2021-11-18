@@ -13,19 +13,19 @@
         <!-- The slideshow -->
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="../assets/Daegu.jpg" alt="Banpo" width="1000" height="300" />
+            <img src="../assets/Daegu.jpg" alt="Banpo" width="1200" height="300" />
             <div class="carousel-caption">
               <h1>HappyHouse</h1>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="../assets/Banpo.jpg" alt="Daegu" width="1000" height="300" />
+            <img src="../assets/Banpo.jpg" alt="Daegu" width="1200" height="300" />
             <div class="carousel-caption">
               <h1>HappyHouse</h1>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="../assets/Chundam.jpg" alt="Chungdam" width="1000" height="300" />
+            <img src="../assets/Chundam.jpg" alt="Chungdam" width="1200" height="300" />
             <div class="carousel-caption">
               <h1>HappyHouse</h1>
             </div>
