@@ -77,6 +77,7 @@ export default {
               // 정상적으로 검색이 완료됐으면
               if (status === kakao.maps.services.Status.OK) {
                 var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                console.log(coords);
                 bounds.extend(coords);
                 var imageSrc =
                     "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png", // 마커 이미지 url, 스프라이트 이미지를 씁니다
@@ -100,7 +101,7 @@ export default {
         
       });
       map.setBounds(bounds);
-      console.log(bounds);
+      // console.log(bounds);
     },
   },
   data() {
