@@ -11,7 +11,7 @@
   import QnaHeader from "@/components/QnaHeader.vue";
   export default {
      created() {
-       this.$router.push("/");
+       //this.$router.push("/");
      },
     components: {
       QnaHeader,
