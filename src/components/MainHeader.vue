@@ -59,17 +59,17 @@
             >
           </b-navbar-nav>
 
-          <b-navbar-nav class="ml-auto" v-if="userInfo">
+          <b-navbar-nav class="ml-auto" v-if="this.isLogin">
             <b-nav-item class="align-self-center"
               ><b-avatar
                 variant="primary"
-                v-text="userInfo ? userInfo.userid.charAt(0).toUpperCase() : ''"
+                v-text="userInfo ? userInfo.id.charAt(0).toUpperCase() : ''"
               ></b-avatar
-              >{{ userInfo.username }}({{ userInfo.userid }})님 환영합니다.</b-nav-item
+              >{{ userInfo.name }}({{ userInfo.id }})님 환영합니다.</b-nav-item
             >
             <b-nav-item class="align-self-center"
               ><router-link :to="{ name: 'MyPage' }" class="link align-self-center"
-                >내정보보기</router-link
+                >내 정보</router-link
               ></b-nav-item
             >
             <b-nav-item class="link align-self-center" @click.prevent="onClickLogout"
@@ -114,8 +114,8 @@ export default {
     onClickLogout() {
       this.SET_IS_LOGIN(false);
       this.SET_USER_INFO(null);
-      sessionStorage.removeItem("access-token");
-      if (this.$route.path != "/") this.$router.push({ name: "Home" });
+      // sessionStorage.removeItem("access-token");
+      this.$router.go(this.$router.currentRoute);
     },
   },
 };

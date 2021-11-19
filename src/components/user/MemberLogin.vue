@@ -2,7 +2,9 @@
   <b-container class="container">
     <b-row>
       <b-col>
-        <b-alert variant="secondary" show><h3><b-icon icon="person-lines-fill"></b-icon> Member Service</h3></b-alert>
+        <b-alert variant="secondary" show
+          ><h3><b-icon icon="person-lines-fill"></b-icon> Member Service</h3></b-alert
+        >
       </b-col>
     </b-row>
     <b-row>
@@ -16,34 +18,22 @@
             <b-form-group label="아이디:" label-for="userid">
               <b-form-input
                 id="userid"
-                v-model="user.userid"
+                v-model="user.id"
                 required
-                placeholder="아이디 입력...."
-                @keyup.enter="confirm"
+                placeholder="아이디"
               ></b-form-input>
             </b-form-group>
             <b-form-group label="비밀번호:" label-for="userpwd">
               <b-form-input
                 type="password"
                 id="userpwd"
-                v-model="user.userpwd"
+                v-model="user.password"
                 required
-                placeholder="비밀번호 입력...."
-                @keyup.enter="confirm"
+                placeholder="비밀번호"
               ></b-form-input>
             </b-form-group>
-            <b-button
-              type="button"
-              variant="primary"
-              class="m-1"
-              @click="confirm"
-              >로그인</b-button
-            >
-            <b-button
-              type="button"
-              variant="success"
-              class="m-1"
-              @click="movePage"
+            <b-button type="button" variant="primary" class="m-1" @click="confirm">로그인</b-button>
+            <b-button type="button" variant="success" class="m-1" @click="movePage"
               >회원가입</b-button
             >
           </b-form>
@@ -64,8 +54,8 @@ export default {
   data() {
     return {
       user: {
-        userid: null,
-        userpwd: null,
+        id: null,
+        password: null,
       },
     };
   },
@@ -73,13 +63,16 @@ export default {
     ...mapState(memberStore, ["isLogin", "isLoginError"]),
   },
   methods: {
-    ...mapActions(memberStore, ["userConfirm", "getUserInfo"]),
+    ...mapActions(memberStore, ["LOGIN"]),
     async confirm() {
-      await this.userConfirm(this.user);
-      let token = sessionStorage.getItem("access-token");
-      if (this.isLogin) {
-        await this.getUserInfo(token);
-        this.$router.push({ name: "Home" });
+      if (this.user.id == null) alert("아이디를 입력해주세요.");
+      else if (this.user.password == null) alert("비밀번호를 입력해주세요.");
+      else {
+        await this.LOGIN(this.user);
+
+        if (this.isLogin) {
+          this.$router.push("/");
+        }
       }
     },
     movePage() {

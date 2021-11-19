@@ -191,12 +191,15 @@ export default {
     dongList() {
       this.CLEAR_DONG_LIST();
       this.CLEAR_HOUSE_LIST();
+      this.CLEAR_HOUSE2_LIST();
       this.dongCode = null;
       if (this.gugunCode) this.getDong(this.gugunCode);
     },
     searchApt() {
       if (this.dongCode) {
         this.currentPage = 1;
+        this.CLEAR_HOUSE_LIST();
+        this.CLEAR_HOUSE2_LIST();
         this.SET_DONG_NAME(this.dongCode);
         this.getHouseList(this.gugunCode);
       }
@@ -205,6 +208,8 @@ export default {
       if (this.aptName == "") alert("검색어를 입력해주세요.");
       else {
         this.currentPage = 1;
+        this.CLEAR_HOUSE_LIST();
+        this.CLEAR_HOUSE2_LIST();
         this.getWords();
         this.getHouseName(this.aptName);
       }
