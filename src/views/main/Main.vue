@@ -35,36 +35,49 @@
             <b-button variant="outline-info" @click="search">검색</b-button>
           </b-row>
 
-          <b-table
-            v-if="houses != null"
-            striped
-            hover
-            :items="houses"
-            :fields="fields"
-            :filter="dongCode"
-            :filter-function="filterDong"
-          ></b-table>
+          <div class="overflow-auto" v-if="houses.length != 0">
+            <b-table
+              hover
+              id="housetable"
+              head-variant="light"
+              :items="houses"
+              :fields="fields"
+              :per-page="perPage"
+              :current-page="currentPage"
+            ></b-table>
 
-          <b-table
-            v-if="houses2 != null"
-            striped
-            hover
-            :items="houses2"
-            :fields="fields2"
-          ></b-table>
+            <b-pagination
+              v-model="currentPage"
+              :total-rows="houses.length"
+              :per-page="perPage"
+              aria-controls="housetable"
+            ></b-pagination>
+          </div>
+
+          <div class="overflow-auto" v-if="houses2.length != 0">
+            <b-table
+              hover
+              id="house2table"
+              head-variant="light"
+              :items="houses2"
+              :fields="fields2"
+              :per-page="perPage"
+              :current-page="currentPage"
+            ></b-table>
+
+            <b-pagination
+              v-model="currentPage"
+              :total-rows="houses2.length"
+              :per-page="perPage"
+              aria-controls="house2table"
+            ></b-pagination>
+          </div>
 
           <ka-kao-map ref="KaKaoMap" />
-          <table class="table mt-2" style="text-align: center; width: 60%; margin: auto">
-            <colgroup>
-              <col width="100" />
-            </colgroup>
-            <thead>
-              <tr>
-                <th>인기 검색어</th>
-              </tr>
-            </thead>
-            <tbody id="wordcount"></tbody>
-          </table>
+          
+          <br>
+          <word />
+
         </div>
       </div>
     </section>
@@ -74,17 +87,21 @@
 <script>
 import { mapState, mapActions, mapMutations } from "vuex";
 import KaKaoMap from "./KaKaoMap.vue";
+import Word from "@/views/main/Word.vue"
 
 const houseStore = "houseStore";
+const wordStore = "wordStore";
 
 export default {
-  components: { KaKaoMap },
+  components: { KaKaoMap, Word },
   data() {
     return {
       sidoCode: null,
       gugunCode: null,
       dongCode: null,
       aptName: "",
+      currentPage: 1,
+      perPage: 3,
 
       fields: [
         {
@@ -149,9 +166,11 @@ export default {
     this.CLEAR_HOUSE_LIST();
     this.CLEAR_HOUSE2_LIST();
     this.getSido();
+    this.getWords();
   },
   methods: {
     ...mapActions(houseStore, ["getSido", "getGugun", "getDong", "getHouseList", "getHouseName"]),
+    ...mapActions(wordStore, ["getWords"]),
     ...mapMutations(houseStore, [
       "CLEAR_SIDO_LIST",
       "CLEAR_GUGUN_LIST",
@@ -177,18 +196,16 @@ export default {
     },
     searchApt() {
       if (this.dongCode) {
-        this.getHouseList(this.gugunCode);
+        this.currentPage = 1;
         this.SET_DONG_NAME(this.dongCode);
+        this.getHouseList(this.gugunCode);
       }
-    },
-
-    filterDong(row, filter) {
-      if (row.법정동.trim() == filter) return true;
-      else return false;
     },
     search() {
       if (this.aptName == "") alert("검색어를 입력해주세요.");
       else {
+        this.currentPage = 1;
+        this.getWords();
         this.getHouseName(this.aptName);
       }
     },

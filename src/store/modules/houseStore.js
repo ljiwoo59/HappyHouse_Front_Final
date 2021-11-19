@@ -6,8 +6,8 @@ const houseStore = {
     sidos: [{ value: null, text: "시/도" }],
     guguns: [{ value: null, text: "구/군" }],
     dongs: [{ value: null, text: "읍/면/동" }],
-    houses: null,
-    houses2: null,
+    houses: [],
+    houses2: [],
     house: null,
     dongName: ""
   },
@@ -43,13 +43,16 @@ const houseStore = {
       state.dongs = [{ value: null, text: "읍/면/동" }];
     },
     CLEAR_HOUSE_LIST: (state) => {
-        state.houses = null;
+        state.houses = [];
     },
     CLEAR_HOUSE2_LIST: (state) => {
-        state.houses2 = null;
+        state.houses2 = [];
     },
     SET_HOUSE_LIST: (state, houses) => {
-      state.houses = houses;
+      houses.forEach(house => {
+        if (house.법정동.trim() == state.dongName) state.houses.push(house);
+      });
+      // state.houses = houses;
     },
     SET_HOUSE2_LIST: (state, houses) => {
         state.houses2 = houses;
@@ -127,7 +130,7 @@ const houseStore = {
         params,
         (response) => {
             commit("SET_HOUSE2_LIST", response.data);
-            commit("CLEAR_HOUSE_LIST")
+            commit("CLEAR_HOUSE_LIST");
         },
         (error) => {
             console.log(error);

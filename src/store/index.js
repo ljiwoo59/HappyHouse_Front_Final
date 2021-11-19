@@ -5,6 +5,7 @@ import axios from "./axios-common";
 Vue.use(Vuex);
 
 import houseStore from "@/store/modules/houseStore.js";
+import wordStore from "@/store/modules/wordStore.js";
 
 export default new Vuex.Store({
   state: {
@@ -75,6 +76,6 @@ export default new Vuex.Store({
   },
   modules: {
     houseStore,
-
+    wordStore
   },
 });
