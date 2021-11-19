@@ -52,6 +52,11 @@
                 ><b-icon icon="house" font-scale="1"></b-icon> HOME</router-link
               ></b-nav-item
             >
+            <b-nav-item href=""
+              ><router-link :to="{ name: 'QnaList' }" class="link"
+                ><b-icon icon="question-circle" font-scale="1"></b-icon> QnA</router-link
+              ></b-nav-item
+            >
           </b-navbar-nav>
 
           <b-navbar-nav class="ml-auto" v-if="userInfo">
