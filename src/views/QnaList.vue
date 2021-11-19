@@ -1,34 +1,30 @@
 <template>
-  <div>
+  <div class="container">
     <input type="text" v-model="word" @keyup.enter="search"/>&nbsp;
     <button @click="search">검색</button>
     <br />
     <hr />
     <section>
-      <transition-group name="list" tag="ul">
-
-        <b-table-simple hover responsive key="t">
-            <thead  head-variant="dark">
-                <tr>
-                    <th>번호</th>
-                    <th>제목</th>
-                    <th>글쓴이</th>
-                    <th>작성일</th>
-                </tr>
-            </thead>
-            <tbody v-for="qna in Qnas" :key="qna.num" class="shadow">
-                <tr>
-                    <td>{{ qna.num }}</td>
-                    <td><router-link :to="`/detail/${qna.num}`">{{ qna.title }}</router-link></td>
-                    <td>{{qna.id}}</td>
-                    <td>{{qna.wdate}}</td>
-                </tr>
-            </tbody>
-        </b-table-simple>
-      </transition-group>
+      <b-table-simple>
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>글쓴이</th>
+            <th>작성일</th>
+          </tr>
+        </thead>
+        <tbody v-for="qna in Qnas" :key="qna.num">
+          <tr>
+            <td>{{ qna.num }}</td>
+            <td><router-link :to="`/detail/${qna.num}`">{{ qna.title }}</router-link></td>
+            <td>{{qna.id}}</td>
+            <td>{{qna.wdate}}</td>
+          </tr>
+        </tbody>
+      </b-table-simple>
     </section>
     <section>
-      <!-- <TodoFooter></TodoFooter> -->
     </section>
   </div>
 </template>

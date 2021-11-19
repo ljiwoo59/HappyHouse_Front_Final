@@ -1,5 +1,5 @@
 <template>
-  <div>
+    <div class="container">
 		<h1>QnA 등록</h1>
 
 		<div class="AddWrap">
@@ -65,11 +65,4 @@ export default {
 </script>
 
 <style>
-/* .tbAdd{width:100%; border-top:1px solid #888;} */
-	/* .tbAdd th, .tbAdd td{border-bottom:1px solid #eee; padding:5px 0;} */
-	/* .tbAdd td{padding:10px 10px; box-sizing:border-box;} */
-	/* .tbAdd td input{width:100%; min-height:30px; box-sizing:border-box; padding:0 10px;} */
-	/* .tbAdd td textarea{width:100%; min-height:300px; padding:10px; box-sizing:border-box;} */
-    /* .btnWrap{text-align:center; margin:20px 0 0 0;} */
-	/* .btnWrap span p{margin:0 10px; background:#43b984} */
 </style>

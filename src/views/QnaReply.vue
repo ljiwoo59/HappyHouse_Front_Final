@@ -1,63 +1,45 @@
 <template>
-  <div>
-    <table>
-      <tr>
-        <th>번호</th>
-        <td v-text="Qna.num"></td>
-      </tr>
-      <tr>
-        <th>작성자</th>
-        <td v-text="Qna.id"></td>
-      </tr>
-      <tr>
-        <th>제목</th>
-        <td v-text="Qna.title"></td>
-      </tr>
-      <tr>
-        <th>작성일</th>
-        <td v-text="Qna.wdate"></td>
-      </tr>
-      <tr>
-        <th>내용</th>
-        <td v-text="Qna.content"></td>
-      </tr>
-      <tr>
-        <th>답글</th>
-        <td>
-          <textarea cols="50" rows="10" v-model="reply"></textarea>
-        </td>
-      </tr>
-    </table>
+  <div class="container">
+    <div class="AddWrap">
+			<table class="tbAdd">
+				<tr>
+					<th>답글</th>
+					<td><textarea type="text" v-model="reply"></textarea></td>
+				</tr>
+			</table>
+		</div>
 
-    <span class="clearAllBtn" @click="setReply">완료</span>&nbsp;&nbsp;
-    <span class="clearAllBtn" @click="back">돌아가기</span>&nbsp;&nbsp;
+    <div class="btnWrap">
+      <span class="clearAllBtn" @click="setReply"><p class="btnAdd btn" aria-hidden="true">완료</p></span>&nbsp;&nbsp;
+      <span class="clearAllBtn" @click="back"><p class="btnAdd btn" aria-hidden="true">돌아가기</p></span>&nbsp;&nbsp;
+		</div>	
   </div>
 </template>
 
 <script>
 import {mapState} from "vuex";
 export default {
-    computed: {
-        ...mapState(["Qna"])
-    },
-    data() {
-        return {
-            reply: ""
-        }
-    },
-    methods: {
-        setReply() {
-            this.$store.commit("SETREPLY", this.reply);
-            this.$store.dispatch("MODIFY", this.$store.state.Qna);
-            this.$router.push("/detail/Qna.num");
+  computed: {
+    ...mapState(["Qna"])
+  },
+  data() {
+    return {
+      reply: ""
+    }
+  },
+  methods: {
+    setReply() {
+      this.$store.commit("SETREPLY", this.reply);
+      this.$store.dispatch("MODIFY", this.$store.state.Qna);
+      this.$router.push("/detail/Qna.num");
     },
     back() {
-            this.$router.push("/");
-        },
-    }
+      this.$router.push("/");
+    },
+  }
 }
-
-
 </script>
 
-<style lang=""></style>
+<style>
+	.tbAdd td textarea{width:100%; min-height:300px; padding:10px; box-sizing:border-box;}
+</style>
