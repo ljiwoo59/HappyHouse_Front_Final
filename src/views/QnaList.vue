@@ -6,14 +6,25 @@
     <hr />
     <section>
       <transition-group name="list" tag="ul">
-        <li v-for="qna in Qnas" :key="qna.num" class="shadow">
-          {{ qna.num }}.
-          <router-link :to="`/detail/${qna.num}`">{{ qna.title }}</router-link>
-          <!-- {{qna.wdate}} -->
-          <span class="removeBtn" type="button" @click="removeQna(qna.num)">
-            <i class="far fa-trash-alt" aria-hidden="true"></i>
-          </span>
-        </li>
+
+        <b-table-simple hover responsive key="t">
+            <thead  head-variant="dark">
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>글쓴이</th>
+                    <th>작성일</th>
+                </tr>
+            </thead>
+            <tbody v-for="qna in Qnas" :key="qna.num" class="shadow">
+                <tr>
+                    <td>{{ qna.num }}</td>
+                    <td><router-link :to="`/detail/${qna.num}`">{{ qna.title }}</router-link></td>
+                    <td>{{qna.id}}</td>
+                    <td>{{qna.wdate}}</td>
+                </tr>
+            </tbody>
+        </b-table-simple>
       </transition-group>
     </section>
     <section>

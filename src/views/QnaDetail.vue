@@ -1,36 +1,31 @@
 <template>
   <div>
-    <table>
-      <tr>
-        <th>번호</th>
-        <td v-text="Qna.num"></td>
-      </tr>
-      <tr>
-        <th>작성자</th>
-        <td v-text="Qna.id"></td>
-      </tr>
-      <tr>
-        <th>제목</th>
-        <td v-text="Qna.title"></td>
-      </tr>
-      <tr>
-        <th>작성일</th>
-        <td v-text="Qna.wdate"></td>
-      </tr>
-      <tr>
-        <th>내용</th>
-        <td v-text="Qna.content"></td>
-      </tr>
-      <tr>
-        <th>답글</th>
-        <td v-text="Qna.reply"></td>
-      </tr>
-    </table>
+    <div class="AddWrap">
+			<!-- <form> -->
+				<table class="tbAdd">
+					<colgroup>
+						<col width="15%" />
+						<col width="*" />
+					</colgroup>
+					<tr>
+						<th>제목</th>
+						<td>{{Qna.title}}</td>
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td class="txt_cont" v-html="Qna.content"></td>
+					</tr>
+				</table>
+			<!-- </form> -->
+		</div>
 
-    <span class="clearAllBtn" @click="back">돌아가기</span>&nbsp;&nbsp;
-    <span class="clearAllBtn" @click="mod">수정하기</span>&nbsp;&nbsp;
-    <span class="clearAllBtn" @click="rp">답글달기</span>&nbsp;&nbsp;
-  </div>
+    <div class="btnWrap">
+			<!-- <a href="javascript:;" @click="fnList" class="btn">목록</a> -->
+      <span class="addContainer" @click="back"><p class="btnAdd btn" aria-hidden="true">돌아가기</p></span>&nbsp;&nbsp;
+      <span class="addContainer" @click="mod"><p class="btnAdd btn" aria-hidden="true">수정하기</p></span>&nbsp;&nbsp;
+      <span class="addContainer" @click="rp"><p class="btnAdd btn" aria-hidden="true">답글달기</p></span>&nbsp;&nbsp;
+		</div>	
+    </div>
 </template>
 
 <script>
@@ -58,4 +53,9 @@ export default {
 }
 </script>
 
-<style lang=""></style>
+<style>
+.tbAdd{border-top:1px solid #888;}
+	.tbAdd th, .tbAdd td{border-bottom:1px solid #eee; padding:5px 0; }
+	.tbAdd td{padding:10px 10px; box-sizing:border-box; text-align:left;}
+	.tbAdd td.txt_cont{height:300px; vertical-align:top;}
+  </style>
