@@ -1,13 +1,26 @@
 <template>
   <div>
-    <b-table
+    <!-- <b-table
       borderless
       hover
       :items="words"
       :fields="fields"
       head-variant="light"
       @row-clicked="clickApt"
-    ></b-table>
+    ></b-table> -->
+    <div style="float: left; margin-left: 15%; font-size: 15px; font-weight: bold; color: #2c3e50;">
+    인기검색어
+    </div>
+    <div style="float: left;">
+    <vue-swimlane 
+      :words="wordArray" 
+      :circular="false" 
+      :rows="1" 
+      :scale="1" 
+      :transitionDuration="750" 
+      :transitionDelay="1200" 
+      :pauseOnHover="true"></vue-swimlane>
+      </div>
   </div>
 </template>
 
@@ -20,7 +33,7 @@ const memberStore = "memberStore";
 
 export default {
   computed: {
-    ...mapState(wordStore, ["words"]),
+    ...mapState(wordStore, ["words", "wordArray"]),
     ...mapState(memberStore, ["userInfo"]),
   },
   data() {

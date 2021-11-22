@@ -33,6 +33,9 @@
               ></b-form-input>
             </b-col>
             <b-button variant="outline-info" @click="search">검색</b-button>
+            <b-col class="sm-3">
+            <word/>
+            </b-col>
           </b-row>
 
           <div class="row">
@@ -85,13 +88,13 @@
           </div>
 
           
-          <br>
+          <!-- <br>
           <b-row>
           <b-col>
           <word />
           </b-col>
           
-          </b-row>
+          </b-row> -->
 
         <!-- </div> -->
       </div>

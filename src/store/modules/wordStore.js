@@ -4,10 +4,15 @@ const wordStore = {
   namespaced: true,
   state: {
     words: [],
+    wordArray: [],
   },
   mutations: {
     SETWORDS: (state, payload) => {
       state.words = payload;
+
+      payload.forEach((currentElement, index) => {
+        state.wordArray.push(`${index + 1}. ${currentElement.word}`);
+      });
     },
   },
   actions: {
