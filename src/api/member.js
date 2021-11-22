@@ -16,7 +16,7 @@ async function register(params, success, fail) {
 }
 
 async function update(params, success, fail) {
-  await api.post("/user/update", JSON.stringify(params)).then(success).catch(fail);
+  await api.put("/user/update", JSON.stringify(params)).then(success).catch(fail);
 }
 
 async function selectone(params, success, fail) {
@@ -24,7 +24,7 @@ async function selectone(params, success, fail) {
 }
 
 async function deleteone(params, success, fail) {
-  await api.delete("/user/delete" + params).then(success).catch(fail);
+  await api.delete(`/user/delete/${params}`).then(success).catch(fail);
 }
 // function logout(success, fail)
 

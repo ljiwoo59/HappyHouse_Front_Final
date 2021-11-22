@@ -77,16 +77,17 @@ const memberStore = {
         () => {}
       );
     },
-  },
 
-  async DELETEONE({ commit }, user) {
-    await deleteone(
-      user,
-      (response) => {
-        commit("CLEAR_USER_INFO")
-      },
-      () => {}
-    );
+    async DELETEONE({ commit }, id) {
+      await deleteone(
+        id,
+        () => {
+          commit("CLEAR_USER_INFO");
+          commit("SET_IS_LOGIN", false);
+        },
+        () => {}
+      );
+    },
   },
 };
 
