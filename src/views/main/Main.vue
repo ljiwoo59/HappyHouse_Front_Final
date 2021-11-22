@@ -87,9 +87,9 @@
 
         <b-sidebar
           id="sidebar-1"
+          v-if="house != null && houses2.length == 0 && houses.length != 0"
           :title="this.house.아파트"
           shadow
-          v-if="houses2.length == 0 && houses.length != 0"
         >
           <div class="px-3 py-2">
             <b-img :src="require('../../assets/Banpo.jpg')" fluid></b-img>
@@ -136,9 +136,9 @@
 
         <b-sidebar
           id="sidebar-1"
+          v-if="house != null && houses2.length != 0 && houses.length == 0"
           :title="this.house.aptName"
           shadow
-          v-if="houses2.length != 0 && houses.length == 0"
         >
           <div class="px-3 py-2">
             <b-img :src="require('../../assets/Chundam.jpg')" fluid></b-img>
