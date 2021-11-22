@@ -55,7 +55,7 @@ export default {
                       position: coords, // 마커의 위치
                       image: markerImage,
                     });
-
+                  map.setCenter(coords);
                   marker.setMap(map); // 지도 위에 마커를 표출합니다
                   markers.push(marker); // 배열에 생성된 마커를 추가합니다
                 }
