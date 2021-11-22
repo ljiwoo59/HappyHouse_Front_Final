@@ -45,6 +45,9 @@ export default new Vuex.Store({
     ALLNEWS: (state, payload) => {
       state.NewsList = payload.NewsList;
     },
+    CLEAR_NEWS_LIST: (state) => {
+      state.NewsList = [];
+    }
   },
   actions: {
     ALLQNA: (store) => {
@@ -93,13 +96,13 @@ export default new Vuex.Store({
     },
     ALLNEWS: (store) => {
       axios.get("/news").then((response) => {
-        console.log(response.data);
+        store.commit("CLEAR_NEWS_LIST");
         store.commit("ALLNEWS", { NewsList: response.data });
       });
     },
     SEARCHNEWS: (store, payload) => {
-      axios.get("/news/search", {search: payload}).then((response) => {
-        console.log(response.data);
+      axios.get("/news/search/" + payload).then((response) => {
+        store.commit("CLEAR_NEWS_LIST");
         store.commit("ALLNEWS", { NewsList: response.data });
       });
     },

@@ -6,13 +6,15 @@
     <hr />
 
     <section>
-      <b-table id="newstable"
-              head-variant="light"
-              :items="NewsList"
-              :fields="fields"
-              :per-page="perPage"
-              :current-page="currentPage"
-              responsive="sm">
+      <b-table
+        id="newstable"
+        head-variant="light"
+        :items="NewsList"
+        :fields="fields"
+        :per-page="perPage"
+        :current-page="currentPage"
+        responsive="sm"
+      >
         <template #cell(제목)="data">
           <a :href="`${data.item.url}`" target="_blank">{{ data.item.title }}</a>
         </template>
@@ -24,12 +26,18 @@
         </template>
       </b-table>
       <b-pagination
-              v-model="currentPage"
-              :total-rows="NewsList.length"
-              :per-page="perPage"
-              aria-controls="newstable"
-            ></b-pagination>
+        v-model="currentPage"
+        :total-rows="NewsList.length"
+        :per-page="perPage"
+        aria-controls="newstable"
+      ></b-pagination>
     </section>
+
+    <div class="btnWrap">
+      <span class="addContainer" @click="all"
+        ><p class="btnAdd btn" aria-hidden="true">목록</p></span
+      >
+    </div>
   </div>
 </template>
 
@@ -39,10 +47,10 @@ import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
-      fields: ['제목', '내용', '시간'],
+      fields: ["제목", "내용", "시간"],
       currentPage: 1,
       perPage: 15,
-      word: ""
+      word: "",
     };
   },
   created() {
@@ -54,8 +62,11 @@ export default {
   methods: {
     searchN() {
       if (this.word == "") alert("검색어를 입력해주세요.");
-      else
-        this.$store.dispatch("SEARCHNEWS", this.word);
+      else this.$store.dispatch("SEARCHNEWS", this.word);
+    },
+    all() {
+      this.word = "";
+      this.$store.dispatch("ALLNEWS");
     }
   },
 };
