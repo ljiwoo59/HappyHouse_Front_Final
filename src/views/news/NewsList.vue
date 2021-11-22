@@ -1,5 +1,7 @@
 <template>
   <div class="container">
+    <input type="text" v-model="word" @keyup.enter="searchN" />&nbsp;
+    <b-button variant="outline-info" @click="searchN">검색</b-button>
     <br />
     <hr />
 
@@ -40,6 +42,7 @@ export default {
       fields: ['제목', '내용', '시간'],
       currentPage: 1,
       perPage: 15,
+      word: ""
     };
   },
   created() {
@@ -49,6 +52,11 @@ export default {
     ...mapState(["NewsList"]),
   },
   methods: {
+    searchN() {
+      if (this.word == "") alert("검색어를 입력해주세요.");
+      else
+        this.$store.dispatch("SEARCHNEWS", this.word);
+    }
   },
 };
 </script>
