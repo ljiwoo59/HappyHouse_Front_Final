@@ -13,10 +13,15 @@ export default new Vuex.Store({
   state: {
     Qna: {},
     Qnas: [],
+    News: {},
+    NewsList: [],
   },
   getters: {
     Qnas(state) {
       return state.Qnas;
+    },
+    NewsList(state) {
+      return state.NewsList;
     },
   },
   mutations: {
@@ -28,6 +33,9 @@ export default new Vuex.Store({
     },
     SETREPLY: (state, payload) => {
       state.Qna.reply = payload;
+    },
+    ALLNEWS: (state, payload) => {
+      state.NewsList = payload.NewsList;
     },
   },
   actions: {
@@ -73,6 +81,12 @@ export default new Vuex.Store({
     DELETEQNA: (store, payload) => {
       axios.delete("/qna/" + payload).then(() => {
         store.dispatch("ALLQNA");
+      });
+    },
+    ALLNEWS: (store) => {
+      axios.get("/news").then((response) => {
+        console.log(response.data);
+        store.commit("ALLNEWS", { NewsList: response.data });
       });
     },
   },

@@ -13,6 +13,8 @@ import QnaReply from "@/views/QnaReply.vue";
 import QnaDetail from "@/views/QnaDetail.vue";
 import QnaModify from "@/views/QnaModify.vue";
 
+import NewsList from "@/views/news/NewsList.vue";
+
 import store from "@/store/index.js";
 
 Vue.use(VueRouter);
@@ -39,7 +41,7 @@ const routes = [
   {
     path: "/",
     name: "Main",
-    component: Main
+    component: Main,
   },
 
   {
@@ -58,8 +60,6 @@ const routes = [
     beforeEnter: onlyAuthUser,
     component: MemberMyPage,
   },
-
-
 
   {
     path: "/list",
@@ -85,6 +85,11 @@ const routes = [
     path: "/modify/",
     name: "QnaModify",
     component: QnaModify,
+  },
+  {
+    path: "/news",
+    name: "NewsList",
+    component: NewsList,
   },
 ];
 
