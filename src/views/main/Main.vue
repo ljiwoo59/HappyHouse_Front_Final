@@ -45,7 +45,7 @@
           </div>
 
           <!-- <div class="overflow-auto" v-if="houses.length != 0"> -->
-          <div class="col-xl-4">
+          <!-- <div class="col-xl-4">
             <b-table
               hover
               id="housetable"
@@ -62,9 +62,9 @@
               :per-page="perPage"
               aria-controls="housetable"
             ></b-pagination>
-          </div>
+          </div> -->
 
-          <!-- <div class="col-xl-4">
+          <div class="col-xl-4">
             <b-table
               hover
               id="house2table"
@@ -81,7 +81,7 @@
               :per-page="perPage"
               aria-controls="house2table"
             ></b-pagination>
-          </div> -->
+          </div>
           </div>
 
           
@@ -111,7 +111,7 @@ export default {
       dongCode: null,
       aptName: "",
       currentPage: 1,
-      perPage: 3,
+      perPage: 13,
 
       fields: [
         {
