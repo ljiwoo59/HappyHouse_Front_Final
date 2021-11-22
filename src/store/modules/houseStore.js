@@ -124,8 +124,8 @@ const houseStore = {
         }
       );
     },
-    getHouseName: ({ commit }, aptName) => {
-        const params = {aptName : aptName, lat : 0, lng : 0};
+    getHouseName: ({ commit }, params) => {
+      console.log(params);
         housename(
         params,
         (response) => {
