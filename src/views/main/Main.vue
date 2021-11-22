@@ -101,6 +101,7 @@ import Word from "@/views/main/Word.vue"
 
 const houseStore = "houseStore";
 const wordStore = "wordStore";
+const memberStore = "memberStore";
 
 export default {
   components: { KaKaoMap, Word },
@@ -169,6 +170,7 @@ export default {
   },
   computed: {
     ...mapState(houseStore, ["sidos", "guguns", "dongs", "houses", "houses2"]),
+    ...mapState(memberStore, ["userInfo"]),
   },
   created() {
     this.CLEAR_SIDO_LIST();
@@ -221,7 +223,8 @@ export default {
         this.CLEAR_HOUSE_LIST();
         this.CLEAR_HOUSE2_LIST();
         this.getWords();
-        this.getHouseName(this.aptName);
+        if (this.userInfo != null) this.getHouseName({aptName: this.aptName, gugun: this.userInfo.address});
+        else this.getHouseName({aptName: this.aptName, gugun: 0});
       }
     },
   },
