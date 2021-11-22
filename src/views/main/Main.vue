@@ -86,7 +86,12 @@
 
           
           <br>
+          <b-row>
+          <b-col>
           <word />
+          </b-col>
+          
+          </b-row>
 
         <!-- </div> -->
       </div>
