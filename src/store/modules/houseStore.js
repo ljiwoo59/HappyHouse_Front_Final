@@ -15,6 +15,9 @@ const houseStore = {
   getters: {},
 
   mutations: {
+    SET_HOUSE: (state, payload) => {
+      state.house = payload;
+    },
     SET_DONG_NAME: (state, name) => {
       state.dongName = name;
     },

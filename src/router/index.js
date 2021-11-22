@@ -3,6 +3,8 @@ import VueRouter from "vue-router";
 
 import Main from "@/views/main/Main.vue";
 
+import houseDetail from "@/components/houseDetail/houseDetail.vue";
+
 import MemberLogin from "@/components/user/MemberLogin.vue";
 import MemberJoin from "@/components/user/MemberJoin.vue";
 import MemberMyPage from "@/components/user/MemberMyPage.vue";
@@ -43,6 +45,12 @@ const routes = [
     path: "/",
     name: "Main",
     component: Main,
+  },
+
+  {
+    path: "/house",
+    name: "houseDetail",
+    component: houseDetail
   },
 
   {
