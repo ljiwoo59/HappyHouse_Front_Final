@@ -125,7 +125,6 @@ const houseStore = {
       );
     },
     getHouseName: ({ commit }, params) => {
-      console.log(params);
       housename(
         params,
         (response) => {

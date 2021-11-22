@@ -112,7 +112,7 @@ export default {
       dongCode: null,
       aptName: "",
       currentPage: 1,
-      perPage: 13,
+      perPage: 10,
 
       fields: [
         {
@@ -212,6 +212,7 @@ export default {
         this.currentPage = 1;
         this.CLEAR_HOUSE_LIST();
         this.CLEAR_HOUSE2_LIST();
+        this.aptName = "";
         this.SET_DONG_NAME(this.dongCode);
         this.getHouseList(this.gugunCode);
       }
