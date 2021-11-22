@@ -2,7 +2,9 @@
   <b-container class="mt-4" v-if="userInfo">
     <b-row>
       <b-col>
-        <b-alert variant="secondary" show><h3><b-icon icon="person-lines-fill"></b-icon> Member Service</h3></b-alert>
+        <b-alert variant="secondary" show
+          ><h3><b-icon icon="person-lines-fill"></b-icon> Member Service</h3></b-alert
+        >
       </b-col>
     </b-row>
     <b-row>
@@ -17,29 +19,31 @@
             <b-row>
               <b-col cols="2"></b-col>
               <b-col cols="4" align-self="end">아이디</b-col
-              ><b-col cols="4" align-self="start">{{ userInfo.id }}</b-col>
+              ><b-col cols="4" align-self="start"
+                ><input type="text" :placeholder="userInfo.id" readonly="readonly"
+              /></b-col>
               <b-col cols="2"></b-col>
             </b-row>
             <b-row>
               <b-col cols="2"></b-col>
               <b-col cols="4" align-self="end">이름</b-col
-              ><b-col cols="4" align-self="start">{{
-                userInfo.name
-              }}</b-col>
+              ><b-col cols="4" align-self="start"
+                ><input type="text" v-model="user.name" :placeholder="userInfo.name"
+              /></b-col>
               <b-col cols="2"></b-col>
             </b-row>
             <b-row>
               <b-col cols="2"></b-col>
               <b-col cols="4" align-self="end">주소</b-col
-              ><b-col cols="4" align-self="start">{{ userInfo.address }}</b-col>
+              ><b-col cols="4" align-self="start"
+                ><input type="text" v-model="user.address" :placeholder="userInfo.address"
+              /></b-col>
               <b-col cols="2"></b-col>
             </b-row>
-            
           </b-container>
           <hr class="my-4" />
 
-          <b-button variant="primary" class="mr-1" @click="movePage">정보수정</b-button>
-          <b-button variant="danger" class="m-1" @click="deleteone">회원탈퇴</b-button>
+          <b-button variant="primary" class="mr-1" @click="update">수정완료</b-button>
         </b-jumbotron>
       </b-col>
       <b-col></b-col>
@@ -54,21 +58,28 @@ const memberStore = "memberStore";
 
 export default {
   name: "MemberMyPage",
-  components: {},
   computed: {
     ...mapState(memberStore, ["userInfo"]),
   },
+  data() {
+    return {
+      user: {
+        id: "",
+        name: "",
+        address: "",
+      },
+    };
+  },
   methods: {
-    ...mapActions(memberStore, ["DELETEONE"]),
-    async deleteone() {
-      await this.DELETEONE(this.userInfo.id);
+    ...mapActions(memberStore, ["UPDATE"]),
+    async update() {
+      this.user.id = this.userInfo.id;
+      if (this.user.name == "") this.user.name = this.userInfo.name;
+      if (this.user.address == "") this.user.address = this.userInfo.address;
+      await this.UPDATE(this.user);
 
-      this.$router.push("/");
-      
+      this.$router.push({ name: "MyPage" });
     },
-    movePage() {
-      this.$router.push({ name: "Update" });
-    }
   },
 };
 </script>
