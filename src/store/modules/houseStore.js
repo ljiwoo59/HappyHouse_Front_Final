@@ -9,14 +9,14 @@ const houseStore = {
     houses: [],
     houses2: [],
     house: null,
-    dongName: ""
+    dongName: "",
   },
 
   getters: {},
 
   mutations: {
     SET_DONG_NAME: (state, name) => {
-        state.dongName = name;
+      state.dongName = name;
     },
     SET_SIDO_LIST: (state, sidos) => {
       sidos.forEach((sido) => {
@@ -43,20 +43,20 @@ const houseStore = {
       state.dongs = [{ value: null, text: "읍/면/동" }];
     },
     CLEAR_HOUSE_LIST: (state) => {
-        state.houses = [];
+      state.houses = [];
     },
     CLEAR_HOUSE2_LIST: (state) => {
-        state.houses2 = [];
+      state.houses2 = [];
     },
     SET_HOUSE_LIST: (state, houses) => {
-      houses.forEach(house => {
+      houses.forEach((house) => {
         if (house.법정동.trim() == state.dongName) state.houses.push(house);
       });
       // state.houses = houses;
     },
     SET_HOUSE2_LIST: (state, houses) => {
-        state.houses2 = houses;
-      },
+      state.houses2 = houses;
+    },
     SET_DETAIL_HOUSE: (state, house) => {
       state.house = house;
     },
@@ -106,8 +106,8 @@ const houseStore = {
       const SERVICE_KEY = process.env.VUE_APP_APT_DEAL_API_KEY;
 
       const params = {
-        pageNo:encodeURIComponent('1'),
-        numOfRows:encodeURIComponent('1000'),
+        pageNo: encodeURIComponent("1"),
+        numOfRows: encodeURIComponent("1000"),
         LAWD_CD: gugunCode,
         DEAL_YMD: "202110",
         serviceKey: decodeURIComponent(SERVICE_KEY),
@@ -115,7 +115,7 @@ const houseStore = {
       houseList(
         params,
         (response) => {
-        //   console.log(response.data);
+          //   console.log(response.data);
           commit("SET_HOUSE_LIST", response.data.response.body.items.item);
           commit("CLEAR_HOUSE2_LIST");
         },
@@ -126,18 +126,17 @@ const houseStore = {
     },
     getHouseName: ({ commit }, params) => {
       console.log(params);
-        housename(
+      housename(
         params,
         (response) => {
-            commit("SET_HOUSE2_LIST", response.data);
-            commit("CLEAR_HOUSE_LIST");
+          commit("SET_HOUSE2_LIST", response.data);
+          commit("CLEAR_HOUSE_LIST");
         },
         (error) => {
-            console.log(error);
+          console.log(error);
         }
-        );
+      );
     },
-
 
     detailHouse: ({ commit }, house) => {
       // 나중에 house.일련번호를 이용하여 API 호출

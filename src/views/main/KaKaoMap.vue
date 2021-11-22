@@ -55,7 +55,7 @@ export default {
                       position: coords, // 마커의 위치
                       image: markerImage,
                     });
-                  map.setCenter(coords);
+                  
                   marker.setMap(map); // 지도 위에 마커를 표출합니다
                   markers.push(marker); // 배열에 생성된 마커를 추가합니다
                 }
@@ -73,7 +73,7 @@ export default {
       markers = [];
       if (val.length != 0) {
         var i = 0;
-        var bounds = new kakao.maps.LatLngBounds();
+        var flag = 1;
         val.forEach((house) => {
           this.geocoder.addressSearch(
             house.gugunName + " " + house.dongName,
@@ -81,8 +81,6 @@ export default {
               // 정상적으로 검색이 완료됐으면
               if (status === kakao.maps.services.Status.OK) {
                 var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-                console.log(coords);
-                bounds.extend(coords);
                 var imageSrc =
                     "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png", // 마커 이미지 url, 스프라이트 이미지를 씁니다
                   imageSize = new kakao.maps.Size(36, 37), // 마커 이미지의 크기
@@ -96,15 +94,16 @@ export default {
                     position: coords, // 마커의 위치
                     image: markerImage,
                   });
-
+                if(flag == 1) {
+                  map.setCenter(coords);
+                  flag = 0;
+                }
                 marker.setMap(map); // 지도 위에 마커를 표출합니다
                 markers.push(marker); // 배열에 생성된 마커를 추가합니다
               }
             }
           );
         });
-        map.setBounds(bounds);
-        console.log(bounds);
       }
     },
   },
