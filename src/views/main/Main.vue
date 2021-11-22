@@ -45,7 +45,7 @@
           </div>
 
           <!-- <div class="overflow-auto" v-if="houses.length != 0"> -->
-          <!-- <div class="col-xl-4">
+          <div class="col-xl-4" v-if="houses2.length == 0">
             <b-table
               hover
               id="housetable"
@@ -62,9 +62,9 @@
               :per-page="perPage"
               aria-controls="housetable"
             ></b-pagination>
-          </div> -->
+          </div>
 
-          <div class="col-xl-4">
+          <div class="col-xl-4" v-if="houses.length == 0 && houses2.length != 0">
             <b-table
               hover
               id="house2table"

@@ -11,7 +11,14 @@ import memberStore from "@/store/modules/memberStore.js";
 
 export default new Vuex.Store({
   state: {
-    Qna: {},
+    Qna: {
+      num: "",
+      id: "",
+      title: "",
+      content: "",
+      wdate: "",
+      reply: "답변이 없습니다."
+    },
     Qnas: [],
     News: {},
     NewsList: [],
@@ -30,6 +37,7 @@ export default new Vuex.Store({
     },
     DETAILQNA: (state, payload) => {
       state.Qna = payload;
+      if (state.Qna.reply == null) state.Qna.reply = "답변이 없습니다.";
     },
     SETREPLY: (state, payload) => {
       state.Qna.reply = payload;

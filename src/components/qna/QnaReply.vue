@@ -29,12 +29,15 @@ export default {
   },
   methods: {
     setReply() {
-      this.$store.commit("SETREPLY", this.reply);
-      this.$store.dispatch("MODIFY", this.$store.state.Qna);
-      this.$router.push("/detail/Qna.num");
+      if (this.reply == "") alert("입력해주세요");
+      else {
+        this.$store.commit("SETREPLY", this.reply);
+        this.$store.dispatch("MODIFY", this.$store.state.Qna);
+        this.$router.push("/detail/Qna.num");
+      }
     },
     back() {
-      this.$router.push("/");
+      this.$router.push("/list");
     },
   }
 }

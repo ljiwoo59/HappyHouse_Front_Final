@@ -8,11 +8,11 @@ import MemberJoin from "@/components/user/MemberJoin.vue";
 import MemberMyPage from "@/components/user/MemberMyPage.vue";
 import MemberUpdate from "@/components/user/MemberUpdate.vue";
 
-import QnaInput from "@/views/QnaInput.vue";
-import QnaList from "@/views/QnaList.vue";
-import QnaReply from "@/views/QnaReply.vue";
-import QnaDetail from "@/views/QnaDetail.vue";
-import QnaModify from "@/views/QnaModify.vue";
+import QnaInput from "@/components/qna/QnaInput.vue";
+import QnaList from "@/components/qna/QnaList.vue";
+import QnaReply from "@/components/qna/QnaReply.vue";
+import QnaDetail from "@/components/qna/QnaDetail.vue";
+import QnaModify from "@/components/qna/QnaModify.vue";
 
 import NewsList from "@/views/news/NewsList.vue";
 

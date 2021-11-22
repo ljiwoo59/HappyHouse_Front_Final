@@ -18,8 +18,8 @@
     </div>
 
     <div class="btnWrap">
-      <span class="clearAllBtn" @click="back"><p class="btnAdd btn" aria-hidden="true">돌아가기</p></span>
       <span class="clearAllBtn" @click="mod"><p class="btnAdd btn" aria-hidden="true">완료</p></span>
+      <span class="clearAllBtn" @click="back"><p class="btnAdd btn" aria-hidden="true">돌아가기</p></span>&nbsp; &nbsp;
     </div>	
   </div>
 </template>
@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     back() {
-      this.$router.push("/");
+      this.$router.push("/list");
     },
     rp() {
       this.$router.push("/reply");
