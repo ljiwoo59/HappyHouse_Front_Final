@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <input type="text" v-model="word" @keyup.enter="search"/>&nbsp;
-    <button @click="search">검색</button>
+    <input type="text" v-model="word" @keyup.enter="search" />&nbsp;
+    <b-button variant="outline-info" @click="search">검색</b-button>
     <br />
     <hr />
     <section>
@@ -17,20 +17,32 @@
         <tbody v-for="qna in Qnas" :key="qna.num">
           <tr>
             <td>{{ qna.num }}</td>
-            <td><router-link :to="`/detail/${qna.num}`">{{ qna.title }}</router-link></td>
-            <td>{{qna.id}}</td>
-            <td>{{qna.wdate}}</td>
+            <td>
+              <router-link :to="`/detail/${qna.num}`">{{ qna.title }}</router-link>
+            </td>
+            <td>{{ qna.id }}</td>
+            <td>{{ qna.wdate }}</td>
           </tr>
         </tbody>
       </b-table-simple>
     </section>
     <section>
+      <div class="btnWrap">
+        <span class="addContainer" @click="all"
+          ><p class="btnAdd btn" aria-hidden="true">목록</p></span
+        >&nbsp;&nbsp;
+        <span class="addContainer" @click="write"
+          ><p class="btnAdd btn" aria-hidden="true">글쓰기</p></span
+        >&nbsp;&nbsp;
+      </div>
     </section>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from "vuex";
+
+const memberStore = "memberStore";
 
 export default {
   data() {
@@ -43,17 +55,27 @@ export default {
   },
   computed: {
     ...mapState(["Qnas"]),
+    ...mapState(memberStore, ["userInfo"]),
   },
   methods: {
     ...mapActions({
       removeQna: "DELETEQNA",
     }),
-	search() {
+    search() {
       if (this.title != "") {
         this.$store.dispatch("SEARCH", this.word);
       } else {
         alert("검색어를 입력해 주세요");
       }
+    },
+    all() {
+      this.word = "";
+      this.$store.dispatch("ALLQNA");
+    },
+    write() {
+      if (this.userInfo != null)
+        this.$router.push("/input");
+      else alert("로그인 후 이용해주세요.");
     }
   },
 };

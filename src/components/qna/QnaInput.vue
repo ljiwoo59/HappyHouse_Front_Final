@@ -1,17 +1,11 @@
 <template>
     <div class="container">
-		<h1>QnA 등록</h1>
-
 		<div class="AddWrap">
 			<b-table-simple class="tbAdd">
 				<colgroup>
 					<col width="15%" />
 					<col width="*" />
 				</colgroup>
-                <tr>
-					<th>작성자</th>
-					<td><input type="text" v-model="Qna.id"/></td>
-				</tr>
 				<tr>
 					<th>제목</th>
 					<td><input type="text" v-model="Qna.title"/></td>
@@ -29,6 +23,9 @@
         <div class="btnWrap">
             <span class="addContainer" @click="addQna">
                 <p class="btnAdd btn" aria-hidden="true">등록</p>
+            </span>&nbsp;&nbsp;
+            <span class="addContainer" @click="back">
+                <p class="btnAdd btn" aria-hidden="true">뒤로</p>
             </span>
 		</div>
 
@@ -36,6 +33,10 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
+
+const memberStore = "memberStore";
+
 export default {
     data() {
         return {
@@ -46,19 +47,25 @@ export default {
             }
         }
     },
+    computed: {
+        ...mapState(memberStore, ["userInfo"]),
+    },
     methods: {
         addQna() {
             // action call
-            if (this.Qna.id != "" && this.Qna.title != "" && this.Qna.content != "") {
+            if (this.Qna.title != "" && this.Qna.content != "") {
+                this.Qna.id = this.userInfo.name;
                 this.$store.dispatch("ADDQNA", this.Qna);
-                console.log(this.Qna.id);
                 this.Qna.id = "";
                 this.Qna.title = "";
                 this.Qna.content = "";
-                this.$router.push("/");
+                this.$router.push("/list");
             } else {
                 alert("입력해주세요.")
             }
+        },
+        back() {
+            this.$router.push("/list");
         }
     },
 }
