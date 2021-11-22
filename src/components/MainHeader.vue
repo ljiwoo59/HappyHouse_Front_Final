@@ -86,12 +86,12 @@
                 <b-icon icon="people" font-scale="2"></b-icon>
               </template>
               <b-dropdown-item href="#"
-                ><router-link :to="{ name: 'SignUp' }" class="link"
+                ><router-link :to="{ name: 'SignUp' }" class="link2"
                   ><b-icon icon="person-circle"></b-icon> 회원가입</router-link
                 ></b-dropdown-item
               >
               <b-dropdown-item href="#"
-                ><router-link :to="{ name: 'SignIn' }" class="link"
+                ><router-link :to="{ name: 'SignIn' }" class="link2"
                   ><b-icon icon="key"></b-icon> 로그인</router-link
                 ></b-dropdown-item
               >
@@ -126,8 +126,13 @@ export default {
 </script>
 
 <style>
-#nav a.router-link-exact-active {
-  font-size: 12px;
-  color: #42b983;
+.link {
+  font-size: 12.5px;
+  color: white;
+}
+
+.link2 {
+  font-size: 12.5px;
+  color: black;
 }
 </style>

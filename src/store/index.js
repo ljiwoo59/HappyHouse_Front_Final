@@ -97,6 +97,12 @@ export default new Vuex.Store({
         store.commit("ALLNEWS", { NewsList: response.data });
       });
     },
+    SEARCHNEWS: (store, payload) => {
+      axios.get("/news/search", {search: payload}).then((response) => {
+        console.log(response.data);
+        store.commit("ALLNEWS", { NewsList: response.data });
+      });
+    },
   },
   modules: {
     houseStore,
