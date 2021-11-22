@@ -1,17 +1,17 @@
 <template>
-  <div class="container">
+  <div>
     <header id="index_header">
       <!-- 1. carousel -->
-      <div id="cdemo" class="carousel slide" data-ride="carousel">
+      <!-- <div id="cdemo" class="carousel slide" data-ride="carousel"> -->
         <!-- Indicators -->
-        <ul class="carousel-indicators">
+        <!-- <ul class="carousel-indicators">
           <li data-target="#cdemo" data-slide-to="0" class="active"></li>
           <li data-target="#cdemo" data-slide-to="1"></li>
           <li data-target="#cdemo" data-slide-to="2"></li>
-        </ul>
+        </ul> -->
 
         <!-- The slideshow -->
-        <div class="carousel-inner">
+        <!-- <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="../assets/Daegu.jpg" alt="Banpo" width="1200" height="300" />
             <div class="carousel-caption">
@@ -30,16 +30,16 @@
               <h1>HappyHouse</h1>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <!-- Left and right controls -->
-        <a class="carousel-control-prev" href="#cdemo" data-slide="prev">
+        <!-- <a class="carousel-control-prev" href="#cdemo" data-slide="prev">
           <span class="carousel-control-prev-icon"></span>
         </a>
         <a class="carousel-control-next" href="#cdemo" data-slide="next">
           <span class="carousel-control-next-icon"></span>
-        </a>
-      </div>
+        </a> -->
+      <!-- </div> -->
 
       <!-- nav start -->
       <b-navbar toggleable="lg" type="dark" variant="dark">
@@ -54,9 +54,13 @@
             >
             <b-nav-item href="#"
               ><router-link :to="{ name: 'QnaList' }" class="link"
-                ><b-icon icon="question-circle" font-scale="1"></b-icon> QnA</router-link
+                ><b-icon icon="question-circle" font-scale="1" variant="light"></b-icon> QnA</router-link
               ></b-nav-item
             >
+            <b-nav-item href="#"
+              ><router-link :to="{ name: 'NewsList' }" class="link"
+                ><b-icon icon="newspaper" font-scale="1" variant="light"></b-icon> News</router-link
+            ></b-nav-item>
           </b-navbar-nav>
 
           <b-navbar-nav class="ml-auto" v-if="this.isLogin">

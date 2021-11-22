@@ -45,4 +45,12 @@ table{width:100%; border-collapse:collapse;}
 .wrap{width:100%;}
 .container{width:800px; margin:0 auto;}
 .btnWrap span p{padding:10px; background:#34445c; color:#fff; }
+.pagination {
+   position: absolute;
+ bottom: 0;
+ left: 50%;
+ transform: translateX( -50% );
+ justify-content: center;
+}
+
 </style>

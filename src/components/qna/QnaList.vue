@@ -4,9 +4,17 @@
     <b-button variant="outline-info" @click="search">검색</b-button>
     <br />
     <hr />
+
     <section>
-      <b-table-simple>
-        <thead>
+      <b-table 
+      id="qnatable"
+      head-variant="light"
+      :fields="fields"
+      :items="Qnas"
+      :per-page="perPage"
+      :current-page="currentPage"
+      responsive="sm">
+        <!-- <thead>
           <tr>
             <th>번호</th>
             <th>제목</th>
@@ -35,7 +43,35 @@
           ><p class="btnAdd btn" aria-hidden="true">글쓰기</p></span
         >&nbsp;&nbsp;
       </div>
+        </tbody> -->
+        <template #cell(번호)="data">
+          {{ data.item.num }}
+        </template>
+        <template #cell(제목)="data">
+          <router-link :to="`/detail/${data.item.num}`">{{ data.item.title }}</router-link>
+        </template>
+        <template #cell(글쓴이)="data">
+          {{ data.item.id }}
+        </template>
+        <template #cell(작성일)="data">
+          {{ data.item.wdate }}
+        </template>
+      </b-table>
+      <b-pagination
+              v-model="currentPage"
+              :total-rows="Qnas.length"
+              :per-page="perPage"
+              aria-controls="qnatable"
+            ></b-pagination>
     </section>
+    <div class="btnWrap">
+        <span class="addContainer" @click="all"
+          ><p class="btnAdd btn" aria-hidden="true">목록</p></span
+        >&nbsp;&nbsp;
+        <span class="addContainer" @click="write"
+          ><p class="btnAdd btn" aria-hidden="true">글쓰기</p></span
+        >&nbsp;&nbsp;
+      </div>
   </div>
 </template>
 
@@ -48,6 +84,9 @@ export default {
   data() {
     return {
       word: "",
+      fields: ['번호', '제목', '글쓴이', '작성일'],
+      currentPage: 1,
+      perPage: 15,
     };
   },
   created() {

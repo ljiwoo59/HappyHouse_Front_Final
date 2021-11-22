@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
+  <div>
     <section id="index_section">
       <div class="card col-sm-12 mt-1" style="min-height: 850px">
-        <div class="card-body">
+        <!-- <div class="card-body"> -->
           <b-row class="mt-4 mb-4 text-center">
             <b-col class="sm-3">
               <b-form-select
@@ -35,7 +35,17 @@
             <b-button variant="outline-info" @click="search">검색</b-button>
           </b-row>
 
-          <div class="overflow-auto" v-if="houses.length != 0">
+          <div class="row">
+            <div class="col-xl-8 mb-5 mb-xl-0">
+              <div class="card bg-default">
+              <!-- <card type="default" header-classes="bg-transparent"> -->
+          <ka-kao-map ref="KaKaoMap" />
+              <!-- </card> -->
+              </div>
+          </div>
+
+          <!-- <div class="overflow-auto" v-if="houses.length != 0"> -->
+          <div class="col-xl-4">
             <b-table
               hover
               id="housetable"
@@ -54,7 +64,7 @@
             ></b-pagination>
           </div>
 
-          <div class="overflow-auto" v-if="houses2.length != 0">
+          <!-- <div class="col-xl-4">
             <b-table
               hover
               id="house2table"
@@ -71,14 +81,14 @@
               :per-page="perPage"
               aria-controls="house2table"
             ></b-pagination>
+          </div> -->
           </div>
 
-          <ka-kao-map ref="KaKaoMap" />
           
           <br>
           <word />
 
-        </div>
+        <!-- </div> -->
       </div>
     </section>
   </div>
@@ -218,4 +228,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+</style>
