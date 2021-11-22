@@ -31,11 +31,6 @@
   color: #2c3e50;
 }
 
-#nav a.router-link-active {
-  font-size: 12.5px;
-  color: white;
-}
-
 #nav a.router-link-exact-active {
   font-size: 14px;
   color: #42b983;

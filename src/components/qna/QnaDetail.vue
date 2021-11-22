@@ -29,6 +29,7 @@
     <div class="btnWrap">
       <span class="addContainer" @click="back"><p class="btnAdd btn" aria-hidden="true">뒤로</p></span>&nbsp;&nbsp;
       <span class="addContainer" @click="mod"><p class="btnAdd btn" aria-hidden="true">수정하기</p></span>&nbsp;&nbsp;
+      <span class="addContainer" @click="del"><p class="btnAdd btn" aria-hidden="true">삭제하기</p></span>&nbsp;&nbsp;
       <span class="addContainer" @click="rp"><p class="btnAdd btn" aria-hidden="true">답글달기</p></span>&nbsp;&nbsp;
 		</div>	
     </section>
@@ -66,6 +67,14 @@ export default {
       else
         this.$router.push("/modify");
     },
+    del() {
+      if (this.userInfo == null) alert("로그인 후 이용해주세요.");
+      else if (this.userInfo.name != this.Qna.id) alert("작성자만 삭제할 수 있습니다.");
+      else {
+        this.$store.dispatch("DELETEQNA", this.Qna.num);
+        this.$router.push("/list");
+      }
+    }
   }
 }
 </script>
