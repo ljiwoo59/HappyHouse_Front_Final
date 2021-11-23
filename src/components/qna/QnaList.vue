@@ -9,10 +9,10 @@
               style="
                 color: darkolivegreen;
                 font-size: 65px;
-                text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+                text-shadow: -1px 0 beige, 0 1px beige, 1px 0 beige, 0 -1px beige;
               "
             >
-              QnA
+              Your Story Starts With Us.
             </h1>
           </div>
         </div>
@@ -24,19 +24,17 @@
         <div class="container">
           <div class="md-layout">
             <div class="md-layout-item md-size-66 md-xsmall-size-100 mx-auto text-center">
-              <h1 class="title text-center">QnA</h1>
-              <h3 class="description">Search your interest!</h3>
+              <h1 class="title text-center">Customer Service</h1>
+              <h3 class="description" style="font-family:Verdana">What can we help you with?</h3>
             </div>
           </div>
-          <!-- <input type="text" v-model="word" @keyup.enter="search" />&nbsp;
-          <b-button variant="outline-info" @click="search">검색</b-button>
-          <br />
-          <hr /> -->
+          
           <b-row class="mt-4 mb-4 text-center">
             <b-col></b-col>
             <b-col class="sm-3">
               <md-field>
-                <md-input v-model="word" placeholder="Search" @keyup.enter="search"></md-input>
+                <md-icon>search</md-icon>
+                <md-input v-model="word" style="font-family:Verdana" placeholder="Search" @keyup.enter="search"></md-input>
               </md-field>
               </b-col>
             <b-col class="sm-3">
@@ -55,42 +53,14 @@
               :items="Qnas"
               :per-page="perPage"
               :current-page="currentPage"
+              style="font-size: 12px; font-family: 'IBMPlexSansKR-Regular'"
               responsive="sm">
-                <!-- <thead>
-                  <tr>
-                    <th>번호</th>
-                    <th>제목</th>
-                    <th>글쓴이</th>
-                    <th>작성일</th>
-                  </tr>
-                </thead>
-                <tbody v-for="qna in Qnas" :key="qna.num">
-                  <tr>
-                    <td>{{ qna.num }}</td>
-                    <td>
-                      <router-link :to="`/detail/${qna.num}`">{{ qna.title }}</router-link>
-                    </td>
-                    <td>{{ qna.id }}</td>
-                    <td>{{ qna.wdate }}</td>
-                  </tr>
-                </tbody>
-              </b-table-simple>
-            </section>
-            <section>
-              <div class="btnWrap">
-                <span class="addContainer" @click="all"
-                  ><p class="btnAdd btn" aria-hidden="true">목록</p></span
-                >&nbsp;&nbsp;
-                <span class="addContainer" @click="write"
-                  ><p class="btnAdd btn" aria-hidden="true">글쓰기</p></span
-                >&nbsp;&nbsp;
-              </div>
-                </tbody> -->
+
                 <template #cell(번호)="data">
                   {{ data.item.num }}
                 </template>
                 <template #cell(제목)="data">
-                  <router-link :to="`/detail/${data.item.num}`">{{ data.item.title }}</router-link>
+                  <router-link :to="`/detail/${data.item.num}`" style="color:darkolivegreen; font-weight:bold">{{ data.item.title }}</router-link>
                 </template>
                 <template #cell(글쓴이)="data">
                   {{ data.item.id }}
@@ -98,13 +68,11 @@
                 <template #cell(작성일)="data">
                   {{ data.item.wdate }}
                 </template>
+                <template #cell(완료)="data">
+                  <md-icon v-if="data.item.reply != null && data.item.reply != '답변이 없습니다.'" style="color:cadetblue">check</md-icon>
+                  <md-icon v-else></md-icon>
+                </template>
               </b-table>
-              <!-- <b-pagination
-                      v-model="currentPage"
-                      :total-rows="Qnas.length"
-                      :per-page="perPage"
-                      aria-controls="qnatable"
-                    ></b-pagination> -->
             </section>
             <div>
               <b-pagination
@@ -119,12 +87,10 @@
               ><md-button class="md-default">목록</md-button></span
             >&nbsp;&nbsp;
             <span class="addContainer" @click="write"
-              ><md-button class="md-default">글쓰기</md-button></span
+              ><md-button class="md-default">작성</md-button></span
             >&nbsp;&nbsp;
           </div>
           </div>
-          
-          
         </div>
       </div>
     </div>
@@ -146,9 +112,9 @@ export default {
   data() {
     return {
       word: "",
-      fields: ['번호', '제목', '글쓴이', '작성일'],
+      fields: ['번호', '제목', '글쓴이', '작성일', '완료'],
       currentPage: 1,
-      perPage: 15,
+      perPage: 10,
     };
   },
   created() {

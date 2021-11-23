@@ -8,8 +8,8 @@
   >
     <div class="md-toolbar-row md-collapse-lateral">
       <div class="md-toolbar-section-start">
-        <router-link :to="{ name: 'Main' }" class="link">
-          <h3 class="md-title" style="font-weight:bold">HappyHouse</h3>
+        <router-link :to="{ name: 'Main' }" class="link" >
+          <h1 class="md-title" style="font-weight:bold; font-size:20px; font-family:'Lucida Console', 'Courier New', monospace">HappyHouse</h1>
         </router-link>
       </div>
       <div class="md-toolbar-section-end">
@@ -18,33 +18,33 @@
             <md-list>
               <md-list-item>
                 <router-link :to="{ name: 'NewsList' }" class="link"
-                  ><b-icon icon="newspaper" font-scale="1" variant="light"></b-icon>
+                  style="font-size:14px; font-family:Verdana">
                   News</router-link
                 >
               </md-list-item>
 
               <md-list-item>
                 <router-link :to="{ name: 'QnaList' }" class="link"
-                  ><b-icon icon="question-circle" font-scale="1" variant="light"></b-icon>
-                  QnA</router-link
+                  style="font-size:14px; font-family:Verdana">
+                  Help</router-link
                 >
               </md-list-item>
 
               <md-list-item target="_blank" v-if="this.isLogin">
-                <router-link :to="{ name: 'MyPage'}">
+                <router-link :to="{ name: 'MyPage'}" style="font-size:14px; font-family:Verdana">
                 Welcome, {{ userInfo.name }} ({{userInfo.id}})
                 </router-link>
               </md-list-item>
 
               <md-list-item v-if="this.isLogin" @click.prevent="onClickLogout"> 
-                <router-link :to="{}">
-                Sign Out
+                <router-link to="/" style="font-size:14px; font-family:Verdana">
+                SignOut
                 </router-link>
               </md-list-item>
 
               <md-list-item v-if="!this.isLogin">
                 <router-link :to="{ name: 'SignIn' }" class="link2"
-                  ><b-icon icon="key"></b-icon> Sign In</router-link
+                  style="font-size:14px; font-family:Verdana"> Sign In</router-link
                 >
               </md-list-item>
             </md-list>

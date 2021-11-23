@@ -9,7 +9,7 @@
               style="
                 color: darkolivegreen;
                 font-size: 65px;
-                text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+                text-shadow: -1px 0 beige, 0 1px beige, 1px 0 beige, 0 -1px beige;
               "
             >
               Your Story Starts With Us.
@@ -27,47 +27,50 @@
             </div>
           </div>
           <div class="features text-center">
-            <div id="searchbar">
-              
-            </div>
+            <div id="searchbar"></div>
             <b-row class="mt-4 mb-4 text-center">
               <b-col class="sm-3">
                 <md-field>
-                <b-form-select
-                  v-model="sidoCode"
-                  :options="sidos"
-                  @change="gugunList"
-                 style="height: 35px; font-size:11px"
-                ></b-form-select>
+                  <b-form-select
+                    v-model="sidoCode"
+                    :options="sidos"
+                    @change="gugunList"
+                    style="height: 35px; font-size: 11px; font-family: 'IBMPlexSansKR-Regular'"
+                  ></b-form-select>
                 </md-field>
               </b-col>
               <b-col class="sm-3">
                 <md-field>
-                <b-form-select
-                  v-model="gugunCode"
-                  :options="guguns"
-                  @change="dongList"
-                  style="height: 35px;font-size:11px"
-                ></b-form-select>
+                  <b-form-select
+                    v-model="gugunCode"
+                    :options="guguns"
+                    @change="dongList"
+                    style="height: 35px; font-size: 11px; font-family: 'IBMPlexSansKR-Regular'"
+                  ></b-form-select>
                 </md-field>
               </b-col>
               <b-col class="sm-3">
                 <md-field>
-                <b-form-select
-                  v-model="dongCode"
-                  :options="dongs"
-                  @change="searchApt"
-                  style="height: 35px;font-size:11px"
-                ></b-form-select>
+                  <b-form-select
+                    v-model="dongCode"
+                    :options="dongs"
+                    @change="searchApt"
+                    style="height: 35px; font-size: 11px; font-family: 'IBMPlexSansKR-Regular'"
+                  ></b-form-select>
                 </md-field>
               </b-col>
               <b-col class="sm-3">
                 <md-field>
-                  <label>이름으로 검색</label>
+                  <label style="font-family: 'IBMPlexSansKR-Regular'">이름으로 검색</label>
                   <md-input v-model="aptName" type="text" @keyup.enter="search"></md-input>
                 </md-field>
               </b-col>
-              <md-button class="md-info md-sm" @click="search" style="height: 35px; margin-top:12px;font-size:11px">검색</md-button>
+              <md-button
+                class="md-info md-sm"
+                @click="search"
+                style="height: 35px; margin-top: 12px; font-size: 12px; font-family: 'IBMPlexSansKR-Regular'"
+                >검색</md-button
+              >
               <b-col class="sm-3">
                 <word />
               </b-col>
@@ -94,10 +97,10 @@
                   :per-page="perPage"
                   :current-page="currentPage"
                   @row-clicked="clickHouse"
-                  style="font-size: 11px"
+                  style="font-size: 11px; font-family: 'IBMPlexSansKR-Regular'"
                 ></b-table>
 
-                <b-pagination 
+                <b-pagination
                   v-model="currentPage"
                   :total-rows="houses.length"
                   :per-page="perPage"
@@ -110,13 +113,13 @@
                   hover
                   id="house2table"
                   head-variant="light"
-                  v-b-toggle.sidebar-1
+                  v-b-toggle.sidebar-2
                   :items="houses2"
                   :fields="fields2"
                   :per-page="perPage"
                   :current-page="currentPage"
                   @row-clicked="clickHouse"
-                  style="font-size: 11px"
+                  style="font-size: 11px; font-family: 'IBMPlexSansKR-Regular'"
                 ></b-table>
 
                 <b-pagination
@@ -128,27 +131,17 @@
               </div>
             </div>
 
-            <!-- <br>
-          <b-row>
-          <b-col>
-            <word />
-          </b-col>
-          
-          </b-row> -->
-
-            <!-- </div> -->
-
             <b-sidebar
               id="sidebar-1"
               v-if="house != null && houses2.length == 0 && houses.length != 0"
-              :title="this.house.아파트"
               shadow
             >
-              <div class="px-3 py-2">
-                <b-img :src="require('../../assets/Banpo.jpg')" fluid></b-img>
-                <table class="tbAdd">
+              <div class="container" style="margin-top: 60px">
+                <md-button class="md-info" style="font-weight:bold; font-family: 'IBMPlexSansKR-Regular'; font-size:15px">{{ this.house.아파트 }}</md-button>
+                <b-img :src="require('../../assets/Banpo.jpg')" fluid style="margin-top: 10px"></b-img>
+                <table class="tbAdd" style="font-size: 15px; margin-top:20px; font-family: 'IBMPlexSansKR-Regular';">
                   <colgroup>
-                    <col width="15%" />
+                    <col width="20%" />
                     <col width="*" />
                   </colgroup>
                   <tr>
@@ -188,16 +181,16 @@
             </b-sidebar>
 
             <b-sidebar
-              id="sidebar-1"
+              id="sidebar-2"
               v-if="house != null && houses2.length != 0 && houses.length == 0"
-              :title="this.house.aptName"
               shadow
             >
-              <div class="px-3 py-2">
-                <b-img :src="require('../../assets/Chundam.jpg')" fluid></b-img>
-                <table class="tbAdd">
+              <div class="container" style="margin-top: 60px">
+                <md-button class="md-info" style="font-weight:bold; font-family: 'IBMPlexSansKR-Regular'; font-size:15px">{{ this.house.aptName }}</md-button>
+                <b-img :src="require('../../assets/Chundam.jpg')" fluid style="margin-top: 10px"></b-img>
+                <table class="tbAdd" style="font-size: 15px; margin-top:20px; font-family: 'IBMPlexSansKR-Regular';">
                   <colgroup>
-                    <col width="15%" />
+                    <col width="20%" />
                     <col width="*" />
                   </colgroup>
                   <tr>
@@ -385,4 +378,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+</style>

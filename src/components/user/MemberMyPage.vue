@@ -88,6 +88,7 @@ export default {
       if (this.user.address == "") this.user.address = this.userInfo.address;
       await this.UPDATE(this.user);
 
+      // this.movePage();
     },
     async deleteone() {
       await this.DELETEONE(this.userInfo.id);
@@ -95,7 +96,7 @@ export default {
       this.$router.push("/");
     },
     movePage() {
-      this.$router.push({ name: "Update" });
+      this.$router.go(this.$router.currentRoute);
     },
   },
 };

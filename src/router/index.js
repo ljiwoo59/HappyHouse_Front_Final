@@ -8,7 +8,6 @@ import houseDetail from "@/components/houseDetail/houseDetail.vue";
 import MemberLogin from "@/components/user/MemberLogin.vue";
 import MemberJoin from "@/components/user/MemberJoin.vue";
 import MemberMyPage from "@/components/user/MemberMyPage.vue";
-import MemberUpdate from "@/components/user/MemberUpdate.vue";
 
 import QnaInput from "@/components/qna/QnaInput.vue";
 import QnaList from "@/components/qna/QnaList.vue";
@@ -78,14 +77,6 @@ const routes = [
     path: "/user/mypage",
     name: "MyPage",
     components: {default: MemberMyPage, header:MainNavbar},
-    props: {
-      header: {colorOnScroll: 400}
-    }
-  },
-  {
-    path: "/user/update",
-    name: "Update",
-    components: {default: MemberUpdate, header:MainNavbar},
     props: {
       header: {colorOnScroll: 400}
     }

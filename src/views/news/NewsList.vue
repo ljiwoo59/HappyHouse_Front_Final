@@ -9,7 +9,7 @@
               style="
                 color: darkolivegreen;
                 font-size: 65px;
-                text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+                text-shadow: -1px 0 beige, 0 1px beige, 1px 0 beige, 0 -1px beige;
               "
             >
               Your Story Starts With Us.
@@ -24,18 +24,17 @@
           <div class="md-layout">
             <div class="md-layout-item md-size-66 md-xsmall-size-100 mx-auto text-center">
               <h1 class="title text-center">News</h1>
-              <h3 class="description">Search your interest!</h3>
             </div>
           </div>
          <b-row class="mt-4 mb-4 text-center">
            <b-col></b-col>
            <b-col class="sm-3">
               <md-field>
-                <md-input v-model="word" placeholder="Search" @keyup.enter="searchN"></md-input>
+                <md-input v-model="word" style="font-family:Verdana" placeholder="Search Your Interest!" @keyup.enter="searchN"></md-input>
               </md-field>
            </b-col>
            <b-col class="sm-3">
-             <md-button style="float:left" class="md-info"  @click="searchN">검색</md-button>
+             <md-button style="float:left; font-family: 'IBMPlexSansKR-Regular'" class="md-info"  @click="searchN">검색</md-button>
            </b-col>
          </b-row>
           <br />
@@ -50,7 +49,7 @@
               :per-page="perPage"
               :current-page="currentPage"
               responsive="sm"
-              style="font-size: 10.5px"
+              style="font-size: 12px; font-family: 'IBMPlexSansKR-Regular'"
             >
               <template #cell(제목)="data">
                 <a :href="`${data.item.url}`" target="_blank" style="color:darkgreen">{{ data.item.title }}</a>
@@ -71,9 +70,7 @@
           </section>
 
           <div class="btnWrap">
-            <span class="addContainer" @click="all"
-              ><md-button class="md-default"  @click="searchN">목록</md-button></span
-            >
+            <md-button class="md-default"  @click="all">목록</md-button>
           </div>
         </div>
       </div>

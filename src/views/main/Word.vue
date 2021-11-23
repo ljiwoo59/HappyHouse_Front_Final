@@ -15,6 +15,7 @@
         font-size: 15px;
         font-weight: bold;
         color: steelblue;
+        font-family: 'IBMPlexSansKR-Regular';
       "
     >
       추천 >
@@ -27,7 +28,7 @@
         :transitionDuration="750"
         :transitionDelay="1200"
         :pauseOnHover="true"
-        style="width:130px;margin-top: 20px;color:steelblue"
+        style="width:130px;margin-top: 25px;color:steelblue; font-family: 'IBMPlexSansKR-Regular';"
       ></vue-swimlane>
     
   </div>
