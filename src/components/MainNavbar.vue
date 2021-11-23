@@ -31,15 +31,9 @@
               </md-list-item>
 
               <md-list-item target="_blank" v-if="this.isLogin">
-                <router-link :to="{}">
+                <router-link :to="{ name: 'MyPage'}">
                 Welcome, {{ userInfo.name }} ({{userInfo.id}})
                 </router-link>
-              </md-list-item>
-
-              <md-list-item target="_blank" v-if="this.isLogin">
-                <router-link :to="{ name: 'MyPage' }" class="link align-self-center"
-                  >My Page</router-link
-                >
               </md-list-item>
 
               <md-list-item v-if="this.isLogin" @click.prevent="onClickLogout"> 
@@ -48,7 +42,7 @@
                 </router-link>
               </md-list-item>
 
-              <md-list-item target="_blank" v-if="!this.isLogin">
+              <md-list-item v-if="!this.isLogin">
                 <router-link :to="{ name: 'SignIn' }" class="link2"
                   ><b-icon icon="key"></b-icon> Sign In</router-link
                 >

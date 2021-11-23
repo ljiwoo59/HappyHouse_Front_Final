@@ -61,55 +61,83 @@ const routes = [
   {
     path: "/user/siginin",
     name: "SignIn",
-    components: {default: MemberLogin, header:MainNavbar}
+    components: {default: MemberLogin, header:MainNavbar},
+    props: {
+      header: {colorOnScroll: 400}
+    }
   },
   {
     path: "/user/signup",
     name: "SignUp",
-    components: {default: MemberJoin, header:MainNavbar}
+    components: {default: MemberJoin, header:MainNavbar},
+    props: {
+      header: {colorOnScroll: 400}
+    }
   },
   {
     path: "/user/mypage",
     name: "MyPage",
-    beforeEnter: onlyAuthUser,
-    components: {defualt: MemberMyPage, header:MainNavbar}
+    components: {defualt: MemberMyPage, header:MainNavbar},
+    props: {
+      header: {colorOnScroll: 400}
+    }
   },
   {
     path: "/user/update",
     name: "Update",
-    beforeEnter: onlyAuthUser,
-    components: {default: MemberUpdate, header:MainNavbar}
+    components: {default: MemberUpdate, header:MainNavbar},
+    props: {
+      header: {colorOnScroll: 400}
+    }
   },
 
   {
     path: "/list",
     name: "QnaList",
-    components: {default: QnaList, header:MainNavbar}
+    components: {default: QnaList, header:MainNavbar},
+    props: {
+      header: {colorOnScroll: 400}
+    }
   },
   {
     path: "/input",
     name: "QnaInput",
-    components: {default: QnaInput, header:MainNavbar}
+    components: {default: QnaInput, header:MainNavbar},
+    props: {
+      header: {colorOnScroll: 400}
+    }
   },
   {
     path: "/reply",
     name: "QnaReply",
-    components: {default: QnaReply, header:MainNavbar}
+    components: {default: QnaReply, header:MainNavbar},
+    props: {
+      header: {colorOnScroll: 400}
+    }
   },
   {
     path: "/detail/:num",
     name: "QnaDetail",
-    components: {default: QnaDetail, header:MainNavbar}
+    components: {default: QnaDetail, header:MainNavbar},
+    props: {
+      header: {colorOnScroll: 400}
+    }
   },
   {
     path: "/modify/",
     name: "QnaModify",
-    components: {default: QnaModify, header:MainNavbar}
+    components: {default: QnaModify, header:MainNavbar},
+    props: {
+      header: {colorOnScroll: 400}
+    }
   },
   {
     path: "/news",
     name: "NewsList",
-    components: {default: NewsList, header:MainNavbar}
+    components: {default: NewsList, header:MainNavbar},
+    props: {
+      header: {colorOnScroll: 400}
+    }
   },
 ];
 
