@@ -10,73 +10,34 @@
             "
           >
             <login-card header-color="green">
-              <h1 slot="title" class="card-title">Sign Up</h1>
-              <md-button
-                slot="buttons"
-                href="javascript:void(0)"
-                class="md-just-icon md-simple md-white"
-              >
-                <i class="fab fa-facebook-square"></i>
-              </md-button>
-              <md-button
-                slot="buttons"
-                href="javascript:void(0)"
-                class="md-just-icon md-simple md-white"
-              >
-                <i class="fab fa-twitter"></i>
-              </md-button>
-              <md-button
-                slot="buttons"
-                href="javascript:void(0)"
-                class="md-just-icon md-simple md-white"
-              >
-                <i class="fab fa-google-plus-g"></i>
-              </md-button>
-              <p slot="description" class="description">Or Be Classical</p>
-
+              <h1 slot="title" class="card-title">My Page</h1>
+              <div class="avatar" slot="inputs">
+                <img :src="img" alt="Circle Image" class="img-raised rounded-circle img-fluid" />
+                <br><br>
+              </div>
               <md-field class="md-form-group" slot="inputs">
                 <md-icon>face</md-icon>
                 <label>UserID</label>
-                <md-input v-model="user.id"></md-input>
-              </md-field>
-              <md-field class="md-form-group" slot="inputs">
-                <md-icon>lock_outline</md-icon>
-                <label>Password</label>
-                <md-input v-model="user.password" type="password"></md-input>
+                <md-input v-model="userInfo.id" readonly="readonly"></md-input>
               </md-field>
               <md-field class="md-form-group" slot="inputs">
                 <md-icon>person</md-icon>
                 <label>Your Name</label>
-                <md-input v-model="user.name"></md-input>
+                <md-input v-model="user.name" :placeholder="userInfo.name"></md-input>
               </md-field>
               <md-field class="md-form-group" slot="inputs">
                 <md-icon>email</md-icon>
                 <label>Your Address</label>
-                <md-input v-model="user.address"></md-input>
+                <md-input v-model="user.address" :placeholder="userInfo.address"></md-input>
               </md-field>
-              <md-button slot="footer" class="md-simple md-success md-lg" @click="confirm">
-                Get Started
+              <md-button slot="footer" class="md-simple md-success md-lg" @click="update">
+                Edit
+              </md-button>
+              <md-button slot="footer" class="md-simple md-success md-lg" @click="deleteone">
+                Disable Account
               </md-button>
             </login-card>
           </div>
-        </div>
-      </div>
-    </div>
-    <div id="notifications" v-if="!registStatus">
-      <div class="alert alert-danger">
-        <div class="container">
-          <button
-            type="button"
-            aria-hidden="true"
-            class="close"
-            @click="(event) => removeNotify(event, 'alert-danger')"
-          >
-            <md-icon>clear</md-icon>
-          </button>
-          <div class="alert-icon">
-            <md-icon>info_outline</md-icon>
-          </div>
-          <b> ERROR ALERT </b> : 중복된 아이디 입니다!
         </div>
       </div>
     </div>
@@ -97,6 +58,10 @@ export default {
       type: String,
       default: require("@/assets/images/city-profile.jpg"),
     },
+    img: {
+      type: String,
+      default: require("@/assets/images/avatar.jpg"),
+    },
   },
   computed: {
     ...mapState(memberStore, ["userInfo"]),
@@ -106,8 +71,24 @@ export default {
       };
     },
   },
+  data() {
+    return {
+      user: {
+        name: "",
+        address: "",
+      },
+    }
+  },
   methods: {
     ...mapActions(memberStore, ["DELETEONE"]),
+    ...mapActions(memberStore, ["UPDATE"]),
+    async update() {
+      this.user.id = this.userInfo.id;
+      if (this.user.name == "") this.user.name = this.userInfo.name;
+      if (this.user.address == "") this.user.address = this.userInfo.address;
+      await this.UPDATE(this.user);
+
+    },
     async deleteone() {
       await this.DELETEONE(this.userInfo.id);
 

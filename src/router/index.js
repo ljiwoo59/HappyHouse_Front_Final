@@ -77,7 +77,7 @@ const routes = [
   {
     path: "/user/mypage",
     name: "MyPage",
-    components: {defualt: MemberMyPage, header:MainNavbar},
+    components: {default: MemberMyPage, header:MainNavbar},
     props: {
       header: {colorOnScroll: 400}
     }
