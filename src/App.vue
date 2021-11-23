@@ -12,4 +12,12 @@
 </script>
 
 <style>
+  .pagination {
+    /* position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX( -50% ); */
+    justify-content: center;
+  }
+
 </style>
