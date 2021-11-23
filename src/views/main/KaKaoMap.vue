@@ -64,6 +64,7 @@ export default {
           }
         });
       }
+      
     },
     houses2: function (val) {
       console.log("2");

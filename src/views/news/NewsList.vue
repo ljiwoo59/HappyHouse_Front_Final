@@ -1,42 +1,76 @@
 <template>
-  <div class="container">
-    <input type="text" v-model="word" @keyup.enter="searchN" />&nbsp;
-    <b-button variant="outline-info" @click="searchN">검색</b-button>
-    <br />
-    <hr />
+  <div>
+    <parallax class="section page-header header-filter" :style="headerStyle">
+      <div class="container">
+        <div class="md-layout">
+          <div class="md-layout-item md-size-50 md-small-size-70 md-xsmall-size-100">
+            <h1
+              class="title"
+              style="
+                color: darkolivegreen;
+                font-size: 65px;
+                text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+              "
+            >
+              Your Story Starts With Us.
+            </h1>
+          </div>
+        </div>
+      </div>
+    </parallax>
+    <div class="main main-raised">
+      <div class="section">
+        <div class="container">
+          <div class="md-layout">
+            <div class="md-layout-item md-size-66 md-xsmall-size-100 mx-auto text-center">
+              <h1 class="title text-center">News</h1>
+              <h3 class="description">Search your interest!</h3>
+            </div>
+          </div>
+          <b-container>
+              <md-field>
+                <md-input v-model="word" placeholder="Search" @keyup.enter="searchN"></md-input>
+              </md-field>
+              <md-button class="md-info"  @click="searchN">검색</md-button>
+          </b-container>
+          <br />
+          <hr />
 
-    <section>
-      <b-table
-        id="newstable"
-        head-variant="light"
-        :items="NewsList"
-        :fields="fields"
-        :per-page="perPage"
-        :current-page="currentPage"
-        responsive="sm"
-      >
-        <template #cell(제목)="data">
-          <a :href="`${data.item.url}`" target="_blank">{{ data.item.title }}</a>
-        </template>
-        <template #cell(내용)="data">
-          {{ data.item.contents }}
-        </template>
-        <template #cell(시간)="data">
-          <b-icon icon="clock" font-scale="1" variant="dark"></b-icon> {{ data.item.time }}
-        </template>
-      </b-table>
-      <b-pagination
-        v-model="currentPage"
-        :total-rows="NewsList.length"
-        :per-page="perPage"
-        aria-controls="newstable"
-      ></b-pagination>
-    </section>
+          <section>
+            <b-table
+              id="newstable"
+              head-variant="light"
+              :items="NewsList"
+              :fields="fields"
+              :per-page="perPage"
+              :current-page="currentPage"
+              responsive="sm"
+            >
+              <template #cell(제목)="data">
+                <a :href="`${data.item.url}`" target="_blank">{{ data.item.title }}</a>
+              </template>
+              <template #cell(내용)="data">
+                {{ data.item.contents }}
+              </template>
+              <template #cell(시간)="data">
+                <b-icon icon="clock" font-scale="1" variant="dark"></b-icon> {{ data.item.time }}
+              </template>
+            </b-table>
+            <b-pagination
+              v-model="currentPage"
+              :total-rows="NewsList.length"
+              :per-page="perPage"
+              aria-controls="newstable"
+            ></b-pagination>
+          </section>
 
-    <div class="btnWrap">
-      <span class="addContainer" @click="all"
-        ><p class="btnAdd btn" aria-hidden="true">목록</p></span
-      >
+          <div class="btnWrap">
+            <span class="addContainer" @click="all"
+              ><p class="btnAdd btn" aria-hidden="true">목록</p></span
+            >
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -45,6 +79,12 @@
 import { mapState, mapActions } from "vuex";
 
 export default {
+  props: {
+    header: {
+      type: String,
+      default: require("@/assets/images/hero_bg_1.jpg"),
+    },
+  },
   data() {
     return {
       fields: ["제목", "내용", "시간"],
@@ -58,6 +98,11 @@ export default {
   },
   computed: {
     ...mapState(["NewsList"]),
+    headerStyle() {
+      return {
+        backgroundImage: `url(${this.header})`,
+      };
+    },
   },
   methods: {
     searchN() {
@@ -67,7 +112,7 @@ export default {
     all() {
       this.word = "";
       this.$store.dispatch("ALLNEWS");
-    }
+    },
   },
 };
 </script>

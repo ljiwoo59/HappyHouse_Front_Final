@@ -20,6 +20,8 @@ import NewsList from "@/views/news/NewsList.vue";
 
 import store from "@/store/index.js";
 
+import MainNavbar from "@/components/MainNavbar.vue";
+
 Vue.use(VueRouter);
 
 const onlyAuthUser = async (to, from, next) => {
@@ -44,7 +46,10 @@ const routes = [
   {
     path: "/",
     name: "Main",
-    component: Main,
+    components: {default: Main, header: MainNavbar},
+    props: {
+      header: {colorOnScroll: 400}
+    }
   },
 
   {
@@ -56,55 +61,55 @@ const routes = [
   {
     path: "/user/siginin",
     name: "SignIn",
-    component: MemberLogin,
+    components: {default: MemberLogin, header:MainNavbar}
   },
   {
     path: "/user/signup",
     name: "SignUp",
-    component: MemberJoin,
+    components: {default: MemberJoin, header:MainNavbar}
   },
   {
     path: "/user/mypage",
     name: "MyPage",
     beforeEnter: onlyAuthUser,
-    component: MemberMyPage,
+    components: {defualt: MemberMyPage, header:MainNavbar}
   },
   {
     path: "/user/update",
     name: "Update",
     beforeEnter: onlyAuthUser,
-    component: MemberUpdate,
+    components: {default: MemberUpdate, header:MainNavbar}
   },
 
   {
     path: "/list",
     name: "QnaList",
-    component: QnaList,
+    components: {default: QnaList, header:MainNavbar}
   },
   {
     path: "/input",
     name: "QnaInput",
-    component: QnaInput,
+    components: {default: QnaInput, header:MainNavbar}
   },
   {
     path: "/reply",
     name: "QnaReply",
-    component: QnaReply,
+    components: {default: QnaReply, header:MainNavbar}
   },
   {
     path: "/detail/:num",
     name: "QnaDetail",
-    component: QnaDetail,
+    components: {default: QnaDetail, header:MainNavbar}
   },
   {
     path: "/modify/",
     name: "QnaModify",
-    component: QnaModify,
+    components: {default: QnaModify, header:MainNavbar}
   },
   {
     path: "/news",
     name: "NewsList",
-    component: NewsList,
+    components: {default: NewsList, header:MainNavbar}
   },
 ];
 

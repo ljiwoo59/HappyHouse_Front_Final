@@ -8,19 +8,28 @@
       head-variant="light"
       @row-clicked="clickApt"
     ></b-table> -->
-    <div style="float: left; margin-left: 15%; font-size: 15px; font-weight: bold; color: #2c3e50;">
-    인기검색어
-    </div>
-    <div style="float: left;">
-    <vue-swimlane 
-      :words="wordArray" 
-      :circular="false" 
-      :rows="1" 
-      :scale="1" 
-      :transitionDuration="750" 
-      :transitionDelay="1200" 
-      :pauseOnHover="true"></vue-swimlane>
-      </div>
+    <b-row
+      style="
+        float: left;
+        margin-left: 10%;
+        font-size: 15px;
+        font-weight: bold;
+        color: steelblue;
+      "
+    >
+      추천 >
+    </b-row>
+      <vue-swimlane
+        :words="wordArray"
+        :circular="false"
+        :rows="1"
+        :scale="1"
+        :transitionDuration="750"
+        :transitionDelay="1200"
+        :pauseOnHover="true"
+        style="width:130px;margin-top: 20px;color:steelblue"
+      ></vue-swimlane>
+    
   </div>
 </template>
 
@@ -49,11 +58,7 @@ export default {
   methods: {
     ...mapActions(houseStore, ["getHouseName"]),
     ...mapActions(wordStore, ["getWords"]),
-    ...mapMutations(houseStore, [
-      "CLEAR_HOUSE_LIST",
-      "CLEAR_HOUSE2_LIST",
-      "SET_DONG_NAME",
-    ]),
+    ...mapMutations(houseStore, ["CLEAR_HOUSE_LIST", "CLEAR_HOUSE2_LIST", "SET_DONG_NAME"]),
     clickApt(word) {
       this.CLEAR_HOUSE_LIST();
       this.CLEAR_HOUSE2_LIST();

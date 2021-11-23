@@ -8,12 +8,30 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 
 import Swimlane from "vue-swimlane";
 
+import MaterialKit from "./plugins/material-kit";
+
+Vue.config.productionTip = false;
+
+Vue.use(MaterialKit);
+
 Vue.use(Swimlane);
 
 Vue.use(BootstrapVue);
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin);
-Vue.config.productionTip = false;
+
+const NavbarStore = {
+  showNavbar: false
+};
+
+Vue.mixin({
+  data() {
+    return {
+      NavbarStore
+    };
+  }
+});
+
 
 new Vue({
   router,
