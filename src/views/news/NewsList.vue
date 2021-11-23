@@ -29,13 +29,13 @@
           </div>
          <b-row class="mt-4 mb-4 text-center">
            <b-col></b-col>
-           <b-col>
+           <b-col class="sm-3">
               <md-field>
                 <md-input v-model="word" placeholder="Search" @keyup.enter="searchN"></md-input>
               </md-field>
-              <md-button class="md-info"  @click="searchN">검색</md-button>
            </b-col>
-           <b-col>
+           <b-col class="sm-3">
+             <md-button style="float:left" class="md-info"  @click="searchN">검색</md-button>
            </b-col>
          </b-row>
           <br />
