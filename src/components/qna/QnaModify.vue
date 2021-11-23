@@ -24,7 +24,7 @@
         <div class="container">
           <div class="md-layout">
             <div class="md-layout-item md-size-66 md-xsmall-size-100 mx-auto text-center">
-              <h1 class="title text-center" style="font-family: Verdana">Customer Service</h1>
+              <h1 class="title text-center">Customer Service</h1>
               <h3 class="description" style="font-family: Verdana">What can we help you with?</h3>
             </div>
           </div>
