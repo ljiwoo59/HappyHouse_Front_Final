@@ -1,38 +1,68 @@
 <template>
-  <div class="container">
-    <section>
-    <div class="AddWrap">
-      <table class="tbAdd">
-				<colgroup>
-					<col width="15%" />
-					<col width="*" />
-        </colgroup>
-				<tr>
-					<th>제목</th>
-					<td>{{Qna.title}}</td>
-				</tr>
-        <tr>
-					<th>작성자</th>
-					<td>{{Qna.id}}</td>
-				</tr>
-				<tr>
-					<th>내용</th>
-					<td class="txt_cont" v-html="Qna.content"></td>
-				</tr>
-        <tr>
-					<th>답변</th>
-					<td class="txt_rep" v-html="Qna.reply"></td>
-				</tr>
-			</table>
-    </div>
+  <div>
+    <parallax class="section page-header header-filter" :style="headerStyle">
+        <div class="container">
+            <div class="md-layout">
+                <div class="md-layout-item md-size-50 md-small-size-70 md-xsmall-size-100">
+                    <h1
+                    class="title"
+                    style="
+                        color: darkolivegreen;
+                        font-size: 65px;
+                        text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+                    "
+                    >
+                    QnA 상세
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </parallax>
 
-    <div class="btnWrap">
-      <span class="addContainer" @click="back"><p class="btnAdd btn" aria-hidden="true">뒤로</p></span>&nbsp;&nbsp;
-      <span class="addContainer" @click="mod"><p class="btnAdd btn" aria-hidden="true">수정하기</p></span>&nbsp;&nbsp;
-      <span class="addContainer" @click="del"><p class="btnAdd btn" aria-hidden="true">삭제하기</p></span>&nbsp;&nbsp;
-      <span class="addContainer" @click="rp"><p class="btnAdd btn" aria-hidden="true">답글달기</p></span>&nbsp;&nbsp;
-		</div>	
-    </section>
+    <div class="main main-raised">
+        <div class="section">
+            <div class="container">
+              <div class="md-layout">
+                  <div class="md-layout-item md-size-66 md-xsmall-size-100 mx-auto text-center">
+                      <h1 class="title text-center">QnA 상세</h1>
+                      <h3 class="description">Search your interest!</h3>
+                  </div>
+              </div>
+
+              <div class="AddWrap">
+                <b-table-simple class="tbAdd">
+                  <colgroup>
+                    <col width="15%" />
+                    <col width="*" />
+                  </colgroup>
+                  <tr>
+                    <th>제목</th>
+                    <td>{{Qna.title}}</td>
+                  </tr>
+                  <tr>
+                    <th>작성자</th>
+                    <td>{{Qna.id}}</td>
+                  </tr>
+                  <tr>
+                    <th>내용</th>
+                    <td class="txt_cont" v-html="Qna.content"></td>
+                  </tr>
+                  <tr>
+                    <th>답변</th>
+                    <td class="txt_rep" v-html="Qna.reply"></td>
+                  </tr>
+                </b-table-simple>
+              </div>
+
+              <div class="btnWrap">
+                <span class="addContainer" @click="back"><md-button class="md-default">뒤로</md-button></span>&nbsp;&nbsp;
+                <span class="addContainer" @click="mod"><md-button class="md-default">수정하기</md-button></span>&nbsp;&nbsp;
+                <span class="addContainer" @click="del"><md-button class="md-default">삭제하기</md-button></span>&nbsp;&nbsp;
+                <span class="addContainer" @click="rp"><md-button class="md-default">답글달기</md-button></span>&nbsp;&nbsp;
+              </div>	
+            </div>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -42,13 +72,25 @@ import {mapState} from "vuex";
 const memberStore = "memberStore";
 
 export default {
+  props: {
+    header: {
+      type: String,
+      default: require("@/assets/images/hero_bg_1.jpg"),
+    },
+  },
+  
   created() {
     this.$store.dispatch("DETAILQNA", this.$route.params.num);
   },
 
   computed: {
     ...mapState(["Qna"]),
-    ...mapState(memberStore, ["userInfo"])
+    ...mapState(memberStore, ["userInfo"]),
+    headerStyle() {
+      return {
+        backgroundImage: `url(${this.header})`,
+      };
+    },
   },
 
   methods: {
