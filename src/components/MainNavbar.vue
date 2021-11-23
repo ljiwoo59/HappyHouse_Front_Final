@@ -9,7 +9,7 @@
     <div class="md-toolbar-row md-collapse-lateral">
       <div class="md-toolbar-section-start">
         <router-link :to="{ name: 'Main' }" class="link">
-          <h3 class="md-title">HappyHouse</h3>
+          <h3 class="md-title" style="font-weight:bold">HappyHouse</h3>
         </router-link>
       </div>
       <div class="md-toolbar-section-end">

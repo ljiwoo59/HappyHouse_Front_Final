@@ -37,7 +37,7 @@
                   v-model="sidoCode"
                   :options="sidos"
                   @change="gugunList"
-                 style="height: 35px"
+                 style="height: 35px; font-size:11px"
                 ></b-form-select>
                 </md-field>
               </b-col>
@@ -47,7 +47,7 @@
                   v-model="gugunCode"
                   :options="guguns"
                   @change="dongList"
-                  style="height: 35px"
+                  style="height: 35px;font-size:11px"
                 ></b-form-select>
                 </md-field>
               </b-col>
@@ -57,7 +57,7 @@
                   v-model="dongCode"
                   :options="dongs"
                   @change="searchApt"
-                  style="height: 35px"
+                  style="height: 35px;font-size:11px"
                 ></b-form-select>
                 </md-field>
               </b-col>
@@ -67,7 +67,7 @@
                   <md-input v-model="aptName" type="text" @keyup.enter="search"></md-input>
                 </md-field>
               </b-col>
-              <md-button class="md-info md-sm" @click="search" style="height: 35px; margin-top:12px">검색</md-button>
+              <md-button class="md-info md-sm" @click="search" style="height: 35px; margin-top:12px;font-size:11px">검색</md-button>
               <b-col class="sm-3">
                 <word />
               </b-col>
@@ -94,6 +94,7 @@
                   :per-page="perPage"
                   :current-page="currentPage"
                   @row-clicked="clickHouse"
+                  style="font-size: 11px"
                 ></b-table>
 
                 <b-pagination 
@@ -115,6 +116,7 @@
                   :per-page="perPage"
                   :current-page="currentPage"
                   @row-clicked="clickHouse"
+                  style="font-size: 11px"
                 ></b-table>
 
                 <b-pagination

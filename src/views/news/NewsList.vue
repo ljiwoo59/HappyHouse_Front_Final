@@ -27,14 +27,19 @@
               <h3 class="description">Search your interest!</h3>
             </div>
           </div>
-          <b-container>
+         <b-row class="mt-4 mb-4 text-center">
+           <b-col></b-col>
+           <b-col>
               <md-field>
                 <md-input v-model="word" placeholder="Search" @keyup.enter="searchN"></md-input>
               </md-field>
               <md-button class="md-info"  @click="searchN">검색</md-button>
-          </b-container>
+           </b-col>
+           <b-col>
+           </b-col>
+         </b-row>
           <br />
-          <hr />
+          <br>
 
           <section>
             <b-table
@@ -45,6 +50,7 @@
               :per-page="perPage"
               :current-page="currentPage"
               responsive="sm"
+              style="font-size: 10.5px"
             >
               <template #cell(제목)="data">
                 <a :href="`${data.item.url}`" target="_blank">{{ data.item.title }}</a>
@@ -66,7 +72,7 @@
 
           <div class="btnWrap">
             <span class="addContainer" @click="all"
-              ><p class="btnAdd btn" aria-hidden="true">목록</p></span
+              ><md-button class="md-default"  @click="searchN">목록</md-button></span
             >
           </div>
         </div>
