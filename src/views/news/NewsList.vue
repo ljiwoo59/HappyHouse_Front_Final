@@ -53,7 +53,7 @@
               style="font-size: 10.5px"
             >
               <template #cell(제목)="data">
-                <a :href="`${data.item.url}`" target="_blank">{{ data.item.title }}</a>
+                <a :href="`${data.item.url}`" target="_blank" style="color:darkgreen">{{ data.item.title }}</a>
               </template>
               <template #cell(내용)="data">
                 {{ data.item.contents }}

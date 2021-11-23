@@ -6,7 +6,7 @@ const memberStore = {
   state: {
     isLogin: false,
     isLoginError: false,
-    registStatus: false,
+    registStatus: true,
     userInfo: null,
   },
   getters: {
@@ -58,10 +58,10 @@ const memberStore = {
         user,
         (response) => {
           if (response.data == 1) {
-            commit("SET_REGIST_STATUS", false);
+            commit("SET_REGIST_STATUS", true);
           }
           else {
-            commit("SET_REGIST_STATUS", true);
+            commit("SET_REGIST_STATUS", false);
           }
         },
         () => {}

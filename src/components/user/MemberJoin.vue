@@ -1,68 +1,113 @@
 <template>
-  <b-container class="container">
-    <b-row>
-      <b-col>
-        <b-alert variant="secondary" show
-          ><h3><b-icon icon="person-lines-fill"></b-icon> Member Service</h3></b-alert
-        >
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col></b-col>
-      <b-col cols="5">
-        <b-card class="text-left mt-3" style="max-width: 40rem">
-          <b-form-group id="input-group-1" label="ID:" label-for="input-1">
-            <b-form-input
-              id="input-1"
-              v-model="user.id"
-              type="text"
-              placeholder="아이디 입력"
-              required
-            ></b-form-input>
-          </b-form-group>
+  <div class="wrapper">
+    <div class="section page-header header-filter" :style="headerStyle">
+      <div class="container">
+        <div class="md-layout">
+          <div
+            class="
+              md-layout-item md-size-33 md-small-size-66 md-xsmall-size-100 md-medium-size-40
+              mx-auto
+            "
+          >
+            <login-card header-color="green">
+              <h1 slot="title" class="card-title">Sign Up</h1>
+              <md-button
+                slot="buttons"
+                href="javascript:void(0)"
+                class="md-just-icon md-simple md-white"
+              >
+                <i class="fab fa-facebook-square"></i>
+              </md-button>
+              <md-button
+                slot="buttons"
+                href="javascript:void(0)"
+                class="md-just-icon md-simple md-white"
+              >
+                <i class="fab fa-twitter"></i>
+              </md-button>
+              <md-button
+                slot="buttons"
+                href="javascript:void(0)"
+                class="md-just-icon md-simple md-white"
+              >
+                <i class="fab fa-google-plus-g"></i>
+              </md-button>
+              <p slot="description" class="description">Or Be Classical</p>
 
-          <b-form-group id="input-group-2" label="Name:" label-for="input-2">
-            <b-form-input
-              id="input-2"
-              v-model="user.name"
-              placeholder="이름 입력"
-              required
-            ></b-form-input>
-          </b-form-group>
-
-          <b-form-group id="input-group-3" label="Password:" label-for="input-3">
-            <b-form-input
-              id="input-3"
-              v-model="user.password"
-              placeholder="비밀번호 입력"
-              required
-            ></b-form-input>
-          </b-form-group>
-
-          <b-form-group id="input-group-4" label="Address:" label-for="input-4">
-            <b-form-input
-              id="input-4"
-              v-model="user.address"
-              placeholder="주소 입력"
-              required
-            ></b-form-input>
-          </b-form-group>
-          <b-button type="button" variant="primary" class="m-1" @click="confirm">회원가입</b-button>
-          <b-button type="button" variant="success" class="m-1" @click="movePage">로그인</b-button>
-        </b-card>
-      </b-col>
-      <b-col></b-col>
-    </b-row>
-  </b-container>
+              <md-field class="md-form-group" slot="inputs">
+                <md-icon>face</md-icon>
+                <label>UserID</label>
+                <md-input v-model="user.id"></md-input>
+              </md-field>
+              <md-field class="md-form-group" slot="inputs">
+                <md-icon>lock_outline</md-icon>
+                <label>Password</label>
+                <md-input v-model="user.password" type="password"></md-input>
+              </md-field>
+              <md-field class="md-form-group" slot="inputs">
+                <md-icon>person</md-icon>
+                <label>Your Name</label>
+                <md-input v-model="user.name"></md-input>
+              </md-field>
+              <md-field class="md-form-group" slot="inputs">
+                <md-icon>email</md-icon>
+                <label>Your Address</label>
+                <md-input v-model="user.address"></md-input>
+              </md-field>
+              <md-button slot="footer" class="md-simple md-success md-lg" @click="confirm">
+                Get Started
+              </md-button>
+            </login-card>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="notifications" v-if="!registStatus">
+      <div class="alert alert-danger">
+        <div class="container">
+          <button
+            type="button"
+            aria-hidden="true"
+            class="close"
+            @click="(event) => removeNotify(event, 'alert-danger')"
+          >
+            <md-icon>clear</md-icon>
+          </button>
+          <div class="alert-icon">
+            <md-icon>info_outline</md-icon>
+          </div>
+          <b> ERROR ALERT </b> : 중복된 아이디 입니다!
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapState, mapActions } from "vuex";
+import { LoginCard } from "@/components";
 
 const memberStore = "memberStore";
 
 export default {
   name: "MemberJoin",
+  components: {
+    LoginCard,
+  },
+  props: {
+    header: {
+      type: String,
+      default: require("@/assets/images/profile_city.jpg"),
+    },
+  },
+  computed: {
+    ...mapState(memberStore, ["registStatus"]),
+    headerStyle() {
+      return {
+        backgroundImage: `url(${this.header})`,
+      };
+    },
+  },
   data() {
     return {
       user: {
@@ -83,7 +128,8 @@ export default {
       else {
         await this.REGISTER(this.user);
 
-        this.movePage();
+        if (this.registStatus == true)
+          this.movePage();
       }
     },
     movePage() {
