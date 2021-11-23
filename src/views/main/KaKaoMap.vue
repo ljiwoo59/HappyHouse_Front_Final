@@ -97,7 +97,6 @@ export default {
           }
         });
       }
-      
     },
     houses2: function (val) {
       console.log("2");
@@ -283,7 +282,7 @@ export default {
       // 클릭한 마커에 대한 장소 상세정보를 커스텀 오버레이로 표시하는 함수입니다
       function displayPlaceInfo (place) {
           var content = '<div class="placeinfo">' +
-                          '   <a class="title" href="' + place.place_url + '" target="_blank" title="' + place.place_name + '">' + place.place_name + '</a>';   
+                          '   <a class="title" href="' + place.place_url + '" target="_blank" title="' + place.place_name + '" style="color: #fff;">' + place.place_name + '</a>';   
 
           if (place.road_address_name) {
               content += '    <span title="' + place.road_address_name + '">' + place.road_address_name + '</span>' +
@@ -359,7 +358,7 @@ export default {
 #category li:last-child{margin-right:0;border-right:0;}
 #category li span {display: block;margin:0 auto 3px;width:27px;height: 28px;}
 #category li .category_bg {background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png) no-repeat;}
-#category li .bank {background-position: -10px 0; color: #34445c;}
+#category li .bank {background-position: -10px 0;}
 #category li .mart {background-position: -10px -36px;}
 #category li .pharmacy {background-position: -10px -72px;}
 #category li .oil {background-position: -10px -108px;}
