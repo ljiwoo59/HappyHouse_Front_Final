@@ -3,8 +3,8 @@
     <div :class="{ 'nav-open': NavbarStore.showNavbar }">
       <router-view name="header" />
       <router-view />
-      <!-- <router-view name="footer" /> -->
     </div>
+    <router-view name="footer" />
   </div>
 </template>
 
