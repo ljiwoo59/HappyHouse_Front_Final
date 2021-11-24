@@ -62,24 +62,6 @@
         </div>
       </div>
     </div>
-    <div id="notifications" v-if="!registStatus">
-      <div class="alert alert-danger">
-        <div class="container">
-          <button
-            type="button"
-            aria-hidden="true"
-            class="close"
-            @click="(event) => removeNotify(event, 'alert-danger')"
-          >
-            <md-icon>clear</md-icon>
-          </button>
-          <div class="alert-icon">
-            <md-icon>info_outline</md-icon>
-          </div>
-          <b> ERROR ALERT </b> : 중복된 아이디 입니다!
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -128,8 +110,10 @@ export default {
       else {
         await this.REGISTER(this.user);
 
-        if (this.registStatus == true)
-          this.movePage();
+        if (this.registStatus == true) this.movePage();
+        else {
+          alert("중복된 아이디 입니다.");
+        }
       }
     },
     movePage() {
