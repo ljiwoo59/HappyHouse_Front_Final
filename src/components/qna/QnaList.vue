@@ -1,9 +1,9 @@
 <template>
   <div>
-    <parallax class="section page-header header-filter" :style="headerStyle">
+    <parallax class="section page-header header-filter" :style="headerStyle" style="height:300px">
       <div class="container">
         <div class="md-layout">
-          <div class="md-layout-item md-size-50 md-small-size-70 md-xsmall-size-100">
+          <!-- <div class="md-layout-item md-size-50 md-small-size-70 md-xsmall-size-100">
             <h1
               class="title"
               style="
@@ -14,7 +14,7 @@
             >
               Your Story Starts With Us.
             </h1>
-          </div>
+          </div> -->
         </div>
       </div>
     </parallax>
@@ -106,7 +106,7 @@ export default {
   props: {
     header: {
       type: String,
-      default: require("@/assets/images/hero_bg_1.jpg"),
+      default: require("@/assets/images/hero_bg_4.jpg"),
     },
   },
   data() {
