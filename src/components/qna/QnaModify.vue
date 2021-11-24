@@ -49,7 +49,7 @@
             >
             &nbsp; &nbsp;
             <span class="clearAllBtn" @click="back"
-              ><md-button class="md-default">돌아가기</md-button></span
+              ><md-button class="md-default">뒤로</md-button></span
             >
           </div>
         </div>
@@ -80,7 +80,7 @@ export default {
   },
   methods: {
     back() {
-      this.$router.push("/list");
+      this.$router.push("/detail/" + this.Qna.num);
     },
     rp() {
       this.$router.push("/reply");
@@ -95,7 +95,7 @@ export default {
           content: this.Qna.content,
           reply: this.Qna.reply,
         });
-        this.$router.push("/detail/this.Qna.num");
+        this.$router.push("/detail/" + this.Qna.num);
       }
     },
   },

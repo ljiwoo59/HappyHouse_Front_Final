@@ -128,6 +128,20 @@
                   :per-page="perPage"
                   aria-controls="house2table"
                 ></b-pagination>
+                <md-button
+                v-if="this.userInfo != null && this.searchAll == -1"
+                class="md-default md-sm"
+                @click="click"
+                style="height: 35px; font-size: 12px; font-family: 'IBMPlexSansKR-Regular'"
+                >전체</md-button
+              >
+              <md-button
+                v-if="this.userInfo != null && this.searchAll == 1"
+                class="md-default md-sm"
+                @click="click"
+                style="height: 35px; font-size: 12px; font-family: 'IBMPlexSansKR-Regular'"
+                >주변</md-button
+              >
               </div>
             </div>
 
@@ -248,6 +262,7 @@ export default {
       aptName: "",
       currentPage: 1,
       perPage: 10,
+      searchAll: -1,
 
       fields: [
         {
@@ -369,11 +384,15 @@ export default {
         this.CLEAR_HOUSE_LIST();
         this.CLEAR_HOUSE2_LIST();
         this.getWords();
-        if (this.userInfo != null)
+        if (this.userInfo != null && this.searchAll == -1)
           this.getHouseName({ aptName: this.aptName, gugun: this.userInfo.address });
         else this.getHouseName({ aptName: this.aptName, gugun: 0 });
       }
     },
+    click() {
+      this.searchAll *= -1;
+      this.search();
+    }
   },
 };
 </script>

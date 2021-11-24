@@ -105,11 +105,11 @@ export default {
       else {
         this.$store.commit("SETREPLY", this.reply);
         this.$store.dispatch("MODIFY", this.$store.state.Qna);
-        this.$router.push("/detail/Qna.num");
+        this.$router.push("/detail/" + this.Qna.num);
       }
     },
     back() {
-      this.$router.push("/list");
+      this.$router.push("/detail/" + this.Qna.num);
     },
   },
 };

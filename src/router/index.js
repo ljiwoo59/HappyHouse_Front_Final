@@ -61,7 +61,7 @@ const routes = [
   {
     path: "/user/siginin",
     name: "SignIn",
-    components: {default: MemberLogin, header:MainNavbar , footer: MainFooter},
+    components: {default: MemberLogin, header:MainNavbar},
     props: {
       header: {colorOnScroll: 400}
     }
@@ -69,7 +69,7 @@ const routes = [
   {
     path: "/user/signup",
     name: "SignUp",
-    components: {default: MemberJoin, header:MainNavbar , footer: MainFooter},
+    components: {default: MemberJoin, header:MainNavbar},
     props: {
       header: {colorOnScroll: 400}
     }
@@ -77,7 +77,7 @@ const routes = [
   {
     path: "/user/mypage",
     name: "MyPage",
-    components: {default: MemberMyPage, header:MainNavbar , footer: MainFooter},
+    components: {default: MemberMyPage, header:MainNavbar},
     props: {
       header: {colorOnScroll: 400}
     }
@@ -88,7 +88,7 @@ const routes = [
     name: "QnaList",
     components: {default: QnaList, header:MainNavbar , footer: MainFooter},
     props: {
-      header: {colorOnScroll: 400}
+      header: {colorOnScroll: 150}
     }
   },
   {
@@ -96,7 +96,7 @@ const routes = [
     name: "QnaInput",
     components: {default: QnaInput, header:MainNavbar , footer: MainFooter},
     props: {
-      header: {colorOnScroll: 400}
+      header: {colorOnScroll: 150}
     }
   },
   {
@@ -104,7 +104,7 @@ const routes = [
     name: "QnaReply",
     components: {default: QnaReply, header:MainNavbar , footer: MainFooter},
     props: {
-      header: {colorOnScroll: 400}
+      header: {colorOnScroll: 150}
     }
   },
   {
@@ -112,7 +112,7 @@ const routes = [
     name: "QnaDetail",
     components: {default: QnaDetail, header:MainNavbar , footer: MainFooter},
     props: {
-      header: {colorOnScroll: 400}
+      header: {colorOnScroll: 150}
     }
   },
   {
@@ -120,7 +120,7 @@ const routes = [
     name: "QnaModify",
     components: {default: QnaModify, header:MainNavbar , footer: MainFooter},
     props: {
-      header: {colorOnScroll: 400}
+      header: {colorOnScroll: 150}
     }
   },
   {
@@ -128,7 +128,7 @@ const routes = [
     name: "NewsList",
     components: {default: NewsList, header:MainNavbar , footer: MainFooter},
     props: {
-      header: {colorOnScroll: 400}
+      header: {colorOnScroll: 150}
     }
   },
 ];

@@ -55,24 +55,6 @@
         </div>
       </div>
     </div>
-    <div id="notifications" v-if="isLoginError">
-      <div class="alert alert-danger">
-        <div class="container">
-          <button
-            type="button"
-            aria-hidden="true"
-            class="close"
-            @click="(event) => removeNotify(event, 'alert-danger')"
-          >
-            <md-icon>clear</md-icon>
-          </button>
-          <div class="alert-icon">
-            <md-icon>info_outline</md-icon>
-          </div>
-          <b> ERROR ALERT </b> : 아이디 또는 비밀번호를 확인해주세요!
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -119,7 +101,7 @@ export default {
 
         if (this.isLogin) {
           this.$router.push("/");
-        }
+        } else alert("아이디 또는 비밀번호를 확인해주세요.");
       }
     },
     movePage() {
@@ -136,6 +118,4 @@ export default {
 };
 </script>
 
-<style lang="css">
-
-</style>
+<style lang="css"></style>
