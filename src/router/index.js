@@ -19,7 +19,8 @@ import NewsList from "@/views/news/NewsList.vue";
 
 import store from "@/store/index.js";
 
-import MainNavbar from "@/components/MainNavbar.vue";
+import MainNavbar from "@/components/layout/MainNavbar.vue";
+import MainFooter from "@/components/layout/MainFooter.vue";
 
 Vue.use(VueRouter);
 
@@ -45,7 +46,7 @@ const routes = [
   {
     path: "/",
     name: "Main",
-    components: {default: Main, header: MainNavbar},
+    components: {default: Main, header: MainNavbar , footer: MainFooter},
     props: {
       header: {colorOnScroll: 400}
     }
@@ -60,7 +61,7 @@ const routes = [
   {
     path: "/user/siginin",
     name: "SignIn",
-    components: {default: MemberLogin, header:MainNavbar},
+    components: {default: MemberLogin, header:MainNavbar , footer: MainFooter},
     props: {
       header: {colorOnScroll: 400}
     }
@@ -68,7 +69,7 @@ const routes = [
   {
     path: "/user/signup",
     name: "SignUp",
-    components: {default: MemberJoin, header:MainNavbar},
+    components: {default: MemberJoin, header:MainNavbar , footer: MainFooter},
     props: {
       header: {colorOnScroll: 400}
     }
@@ -76,7 +77,7 @@ const routes = [
   {
     path: "/user/mypage",
     name: "MyPage",
-    components: {default: MemberMyPage, header:MainNavbar},
+    components: {default: MemberMyPage, header:MainNavbar , footer: MainFooter},
     props: {
       header: {colorOnScroll: 400}
     }
@@ -85,7 +86,7 @@ const routes = [
   {
     path: "/list",
     name: "QnaList",
-    components: {default: QnaList, header:MainNavbar},
+    components: {default: QnaList, header:MainNavbar , footer: MainFooter},
     props: {
       header: {colorOnScroll: 400}
     }
@@ -93,7 +94,7 @@ const routes = [
   {
     path: "/input",
     name: "QnaInput",
-    components: {default: QnaInput, header:MainNavbar},
+    components: {default: QnaInput, header:MainNavbar , footer: MainFooter},
     props: {
       header: {colorOnScroll: 400}
     }
@@ -101,7 +102,7 @@ const routes = [
   {
     path: "/reply",
     name: "QnaReply",
-    components: {default: QnaReply, header:MainNavbar},
+    components: {default: QnaReply, header:MainNavbar , footer: MainFooter},
     props: {
       header: {colorOnScroll: 400}
     }
@@ -109,7 +110,7 @@ const routes = [
   {
     path: "/detail/:num",
     name: "QnaDetail",
-    components: {default: QnaDetail, header:MainNavbar},
+    components: {default: QnaDetail, header:MainNavbar , footer: MainFooter},
     props: {
       header: {colorOnScroll: 400}
     }
@@ -117,7 +118,7 @@ const routes = [
   {
     path: "/modify/",
     name: "QnaModify",
-    components: {default: QnaModify, header:MainNavbar},
+    components: {default: QnaModify, header:MainNavbar , footer: MainFooter},
     props: {
       header: {colorOnScroll: 400}
     }
@@ -125,7 +126,7 @@ const routes = [
   {
     path: "/news",
     name: "NewsList",
-    components: {default: NewsList, header:MainNavbar},
+    components: {default: NewsList, header:MainNavbar , footer: MainFooter},
     props: {
       header: {colorOnScroll: 400}
     }
