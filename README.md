@@ -34,3 +34,9 @@
 
 ### 마이페이지
 ![image](https://user-images.githubusercontent.com/54715744/143436746-ddc328c0-df3f-4793-bd7c-3439ef599ac0.png)
+
+---
+
+## Contributor
+* 이지우
+* 김다인
